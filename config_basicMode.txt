@@ -17,7 +17,7 @@ opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
                    }
                    }ORDER BY ?opThemeMain ?opTheme
                    #LIMIT 50
-    "	opThemeMain-opTheme	opThemeMain-opThemeMain_uri;opTheme-opTheme_uri	PUBLICATIONS - Publications by OP Theme	PUBLICATIONS - Publications by OP Themex	TREE	opThemeMain-Publications Themes;opTheme-OP Theme				
+    "	opThemeMain-opTheme	opThemeMain-opThemeMain_uri;opTheme-opTheme_uri	PUBLICATIONS - Publications by OP Theme	PUBLICATIONS - Publications by OP Theme	TREE	opThemeMain-Publications Themes;opTheme-OP Theme				
 Membership	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
