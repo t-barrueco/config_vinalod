@@ -1,23 +1,23 @@
 CLASS	URL	QUERY	HIERARCHY	PROPERTIES	OPTION	OPTION_TEXT	TYPE	CLASSES	PARAMETERS	FILTERS	TOOLTIP	FUNCTION
-opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
+opThemeMain2	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            SELECT DISTINCT ?opThemeMain ?opThemeMain_uri ?opTheme ?opTheme_uri
-            where {{?opTheme_uri rdf:type ?opThemeMain_uri;
-                       skos:prefLabel ?opTheme.
-                    ?opThemeMain_uri rdfs:label ?opThemeMain
+            SELECT DISTINCT ?opThemeMain2 ?opThemeMain2_uri ?opTheme2 ?opTheme2_uri
+            where {{?opTheme2_uri rdf:type ?opThemeMai2n_uri;
+                       skos:prefLabel ?opTheme2.
+                    ?opThemeMain2_uri rdfs:label ?opThemeMain2
                     } 
-                   filter(?opThemeMain_uri=<http://publications.europa.eu/ontology/cdm#concept_op_theme>)
-                   FILTER(langMatches(lang(?opTheme), ""en"")).
+                   filter(?opThemeMain2_uri=<http://publications.europa.eu/ontology/cdm#concept_op_theme>)
+                   FILTER(langMatches(lang(?opTheme2), ""en"")).
                    filter not exists { 
-                       ?opTheme_uri skos:broader ?broader
+                       ?opTheme2_uri skos:broader ?broader
                    }
-                   }ORDER BY ?opThemeMain ?opTheme
+                   }ORDER BY ?opThemeMain2 ?opTheme2
                    #LIMIT 50
-    "	opThemeMain-opTheme	opThemeMain-opThemeMain_uri;opTheme-opTheme_uri	DATASETS - Catalogues of datasets of data.europa.eu	DATASETS - Catalogues of datasets of data.europa.eu	TREE	opThemeMain-Publications Themes;opTheme-OP Theme
+    "	opThemeMain2-opTheme2	opThemeMain2-opThemeMain2_uri;opTheme2-opTheme2_uri	DATASETS - Catalogues of datasets of data.europa.eu	DATASETS - Catalogues of datasets of data.europa.eu	TREE	opThemeMain2-Publications Themes2;opTheme2-OP Theme2
 opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
