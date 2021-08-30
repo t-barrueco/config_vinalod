@@ -351,7 +351,7 @@ eurun	https://publications.europa.eu/webapi/rdf/sparql	"
                    FILTER(langMatches(lang(?corporateBody_country), ""en"")).
                    }ORDER BY ?eurun ?corporateBody
                    #LIMIT 50
-    "	eurun-corporateBody	eurun-eurun_uri;eurun-eurun_image;corporateBody-corporateBody_uri;corporateBody-corporateBody_image;corporateBody-corporateBody_countryUri;corporateBody-corporateBody_country;corporateBody-corporateBody_locationUri;corporateBody-corporateBody_location	WHOISWHO EURUN Suborganizations	WHOISWHO EURUN Suborganizations	TREE	eurun-European Union;corporateBody-corporateBody		corporateBody_country-dropdown;corporateBody_location-dropdown	corporateBody_country-Country;corporateBody_location-Location	
+    "	eurun-corporateBody	eurun-eurun_uri;eurun-eurun_image;corporateBody-corporateBody_uri;corporateBody-corporateBody_image;corporateBody-corporateBody_countryUri;corporateBody-corporateBody_country;corporateBody-corporateBody_locationUri;corporateBody-corporateBody_location	EU WHOISWHO European Union Suborganizations	EU WHOISWHO European Union Suborganizations	TREE	eurun-European Union;corporateBody-corporateBody		corporateBody_country-dropdown;corporateBody_location-dropdown	corporateBody_country-Country;corporateBody_location-Location	
 corporateBody	https://publications.europa.eu/webapi/rdf/sparql	"
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
