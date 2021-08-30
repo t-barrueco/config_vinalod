@@ -17,7 +17,7 @@ opThemeMain2	https://publications.europa.eu/webapi/rdf/sparql	"
                    }
                    }ORDER BY ?opThemeMain2 ?opTheme2
                    #LIMIT 50
-    "	opThemeMain2-opTheme2	opThemeMain2-opThemeMain2_uri;opTheme2-opTheme2_uri	DATASETS20210830_1145 - Catalogues of datasets of data.europa.eu	DATASETS - Catalogues of datasets of data.europa.eu	TREE	opThemeMain2-Publications Themes2;opTheme2-OP Theme2
+    "	opThemeMain2-opTheme2	opThemeMain2-opThemeMain2_uri;opTheme2-opTheme2_uri	DATASETS20210830_1146 - Catalogues of datasets of data.europa.eu	DATASETS20210830_1146 - Catalogues of datasets of data.europa.eu	TREE	opThemeMain2-Publications Themes2;opTheme2-OP Theme2
 opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
