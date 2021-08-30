@@ -17,6 +17,25 @@ opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
                    }
                    }ORDER BY ?opThemeMain ?opTheme
                    #LIMIT 50
+    "	opThemeMain-opTheme	opThemeMain-opThemeMain_uri;opTheme-opTheme_uri	DATASETs - Catlogues of datasets of data.europa.eu 	TREE	opThemeMain-Publications Themes;opTheme-OP Theme
+opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT DISTINCT ?opThemeMain ?opThemeMain_uri ?opTheme ?opTheme_uri
+            where {{?opTheme_uri rdf:type ?opThemeMain_uri;
+                       skos:prefLabel ?opTheme.
+                    ?opThemeMain_uri rdfs:label ?opThemeMain
+                    } 
+                   filter(?opThemeMain_uri=<http://publications.europa.eu/ontology/cdm#concept_op_theme>)
+                   FILTER(langMatches(lang(?opTheme), ""en"")).
+                   filter not exists { 
+                       ?opTheme_uri skos:broader ?broader
+                   }
+                   }ORDER BY ?opThemeMain ?opTheme
+                   #LIMIT 50
     "	opThemeMain-opTheme	opThemeMain-opThemeMain_uri;opTheme-opTheme_uri	PUBLICATIONS - Publications by OP Theme	PUBLICATIONS - Publications by OP Theme	TREE	opThemeMain-Publications Themes;opTheme-OP Theme				
 Membership	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
