@@ -1,14 +1,4 @@
 CLASS	URL	QUERY	HIERARCHY	PROPERTIES	OPTION	OPTION_TEXT	TYPE	CLASSES	PARAMETERS	FILTERS	TOOLTIP	FUNCTION
-DEUCatalog	https://data.europa.eu/sparql	"
-    select  distinct ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog  ?DEUCatalog_size
-where {
-
-?DEUCatalog_uri <http://purl.org/dc/terms/title> ?title.
-optional{?DEUCatalog_uri <http://purl.org/dc/terms/description> ?description}
-
-{select ?DEUCatalog_uri count(distinct ?ds) as ?DEUCatalog_size where {?DEUCatalog_uri  	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type><http://www.w3.org/ns/dcat#Catalog>.  ?DEUCatalog_uri <http://www.w3.org/ns/dcat#dataset> ?ds. }}
-}
-    "	DEUCatalog-opTheme2	DEUCatalog-DEUCatalog_uri;opTheme2-opTheme2_uri	DATASETS20210831_1042 - Catalogues of datasets of data.europa.eu	DATASETS20210831_1042 - Catalogues of datasets of data.europa.eu	TREE	DEUCatalog-Publications Themes2;opTheme2-OP Theme2
 opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -28,6 +18,16 @@ opThemeMain	https://publications.europa.eu/webapi/rdf/sparql	"
                    }ORDER BY ?opThemeMain ?opTheme
                    #LIMIT 50
     "	opThemeMain-opTheme	opThemeMain-opThemeMain_uri;opTheme-opTheme_uri	PUBLICATIONS - Publications by OP Theme	PUBLICATIONS - Publications by OP Theme	TREE	opThemeMain-Publications Themes;opTheme-OP Theme				
+DEUCatalog	https://data.europa.eu/sparql	"
+    select  distinct ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog  ?DEUCatalog_size
+where {
+
+?DEUCatalog_uri <http://purl.org/dc/terms/title> ?title.
+optional{?DEUCatalog_uri <http://purl.org/dc/terms/description> ?description}
+
+{select ?DEUCatalog_uri count(distinct ?ds) as ?DEUCatalog_size where {?DEUCatalog_uri  	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type><http://www.w3.org/ns/dcat#Catalog>.  ?DEUCatalog_uri <http://www.w3.org/ns/dcat#dataset> ?ds. }}
+}
+    "	DEUCatalog-opTheme2	DEUCatalog-DEUCatalog_uri;opTheme2-opTheme2_uri	DATASETS20210831_1142 - Catalogues of datasets of data.europa.eu	DATASETS20210831_1142 - Catalogues of datasets of data.europa.eu	TREE	DEUCatalog-Publications Themes2;opTheme2-OP Theme2				
 Membership	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
