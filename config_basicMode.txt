@@ -1,5 +1,5 @@
 CLASS	URL	QUERY	HIERARCHY	PROPERTIES	OPTION	OPTION_TEXT	TYPE	CLASSES	PARAMETERS	FILTERS	TOOLTIP	FUNCTION
-DEUCatalog	https://data.europa.eu/sparql?	"
+DEUCatalog	https://data.europa.eu/sparql	"
     select  distinct ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog  ?DEUCatalog_size
 where {
 
