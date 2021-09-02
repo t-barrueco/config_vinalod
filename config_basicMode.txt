@@ -32,7 +32,7 @@ catalog2	https://data.europa.eu/sparql	"
     select  distinct ?catalog2_uri concat(?title, ' - ', ?description) as ?catalog2  ?catalog2_size
 where {
 
-?catalog2_uri <http://purl.org/dc/terms/title> ?title.
+?catalog2_uri	<http://purl.org/dc/terms/title> ?title.
 optional{?catalog2_uri <http://purl.org/dc/terms/description> ?description}
 
 {select ?catalog2_uri count(distinct ?ds) as ?catalog2_size where {?catalog2_uri  	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type><http://www.w3.org/ns/dcat#Catalog>.  ?catalog2_uri <http://www.w3.org/ns/dcat#dataset> ?ds. }}
