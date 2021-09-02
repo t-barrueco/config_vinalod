@@ -38,7 +38,6 @@ optional{?catalog2_uri <http://purl.org/dc/terms/description> ?description}
 {select ?catalog2_uri count(distinct ?ds) as ?catalog2_size where {?catalog2_uri  	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type><http://www.w3.org/ns/dcat#Catalog>.  ?catalog2_uri <http://www.w3.org/ns/dcat#dataset> ?ds. }}
 }
     "	catalog2-opTheme2	catalog2-catalog2_uri;opTheme2-opTheme2_uri	DATASETS - Catalogues of datasets of data.europa.eu	DATASETS - Catalogues of datasets of data.europa.eu	TREE	catalog2-Catalog of datasets;opTheme2-OP Theme2				
-
 Membership	https://publications.europa.eu/webapi/rdf/sparql	"
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
