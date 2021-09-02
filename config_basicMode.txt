@@ -27,7 +27,7 @@ optional{?catalog_uri <http://purl.org/dc/terms/description> ?description}
 
 {select ?catalog_uri count(distinct ?ds) as ?catalog_size where {?catalog_uri  	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type><http://www.w3.org/ns/dcat#Catalog>.  ?catalog_uri <http://www.w3.org/ns/dcat#dataset> ?ds. }}
 }
-    "	catalog-opTheme2	catalog-catalog_uri;opTheme2-opTheme2_uri	DATASETS20210902_1552 - Catalogues of datasets of data.europa.eu	DATASETS20210902_1552 - Catalogues of datasets of data.europa.eu	TREE	catalog-Catalog of datasets;opTheme2-OP Theme2				
+    "	catalog-opTheme2	catalog-catalog_uri;opTheme2-opTheme2_uri	DATASETS20210902_1752 - Catalogues of datasets of data.europa.eu	DATASETS20210902_1752 - Catalogues of datasets of data.europa.eu	TREE	catalog-Catalog of datasets;opTheme2-OP Theme2				
 catalog2	https://data.europa.eu/sparql	"
     select  distinct ?catalog2_uri concat(?title, ' - ', ?description) as ?catalog2  ?catalog2_size
 where {
