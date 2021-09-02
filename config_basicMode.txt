@@ -35,7 +35,7 @@ where {
 ?catalog_uri <http://purl.org/dc/terms/title> ?title.
 optional{?catalog_uri <http://purl.org/dc/terms/description> ?description}
 
-{select ?catalog_uri count(distinct ?ds) as ?catalog_size where {?catalog_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type><http://www.w3.org/ns/dcat#Catalog>.  ?dataeuropa_uri <http://www.w3.org/ns/dcat#dataset> ?ds. }}
+{select ?catalog_uri count(distinct ?ds) as ?catalog_size where {?catalog_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type><http://www.w3.org/ns/dcat#Catalog>.  ?catalog_uri <http://www.w3.org/ns/dcat#dataset> ?ds. }}
 }
     "	dataeuropa-catalog	dataeuropa-dataeuropa_uri;catalog-catalog_uri	DATASETS - Catalogues of datasets of data.europa.eu	DATASETS - Catalogues of datasets of data.europa.eu	TREE	dataeuropa-data.europa.eu;catalog-Catalog of datasets				
 Membership	https://publications.europa.eu/webapi/rdf/sparql	"
