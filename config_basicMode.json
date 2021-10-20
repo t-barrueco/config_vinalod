@@ -1483,7 +1483,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211020_2114 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS (Old version) - Catalogues of datasets of data.europa.eu",
         "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
     },
   {
@@ -1508,19 +1508,19 @@
                 "property_name": "DEU Catalog URI"
             },
             {
-                "class": "opTheme2",
-                "property": "opTheme2_uri",
-                "property_name": "OP Theme URI"
+                "class": "DEUTheme",
+                "property": "DEUTheme_uri",
+                "property_name": "DEU Theme URI"
             }
         ],
         "classes_text": [
             {
                 "class": "DEUCatalog",
-                "text": "Publications Themes2"
+                "text": "Open data Catalog"
             },
             {
-                "class": "opTheme2",
-                "text": "OP Theme2"
+                "class": "DEUTheme",
+                "text": "Theme of open data"
             }
         ],
         "parameters": [],
@@ -1529,8 +1529,8 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211020_2114beta - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS20211020_2114beta - Catalogues of datasets of data.europa.eu"
+        "option": "DATASETS20211020_2134beta - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS20211020_2134beta - Catalogues of datasets of data.europa.eu"
     },
   
     {
