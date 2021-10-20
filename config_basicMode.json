@@ -1483,8 +1483,8 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS20211020_2055 - Catalogues of datasets of data.europa.eu"
+        "option": "DATASETS20211020_2111 - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
     },
   {
         "class": "dataeuropa",
@@ -1524,8 +1524,8 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS20211020_2055beta - Catalogues of datasets of data.europa.eu"
+        "option": "",
+        "option_text": "DATASETS20211020_2111beta - Catalogues of datasets of data.europa.eu"
     },
   
     {
