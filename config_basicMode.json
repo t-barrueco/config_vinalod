@@ -1483,9 +1483,51 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20210831_1142 - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS20210831_1142 - Catalogues of datasets of data.europa.eu"
+        "option": "DATASETS - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS20211020_2055 - Catalogues of datasets of data.europa.eu"
     },
+  {
+        "class": "dataeuropa",
+        "endpoint_url": "https://data.europa.eu/sparql",
+        "query": "SELECT DISTINCT \"Data catalog\" as ?DEUCatalogRoot ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_size ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri)\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  }     { SELECT  ?DEUCatalog_uri count(distinct ?ds) as ?DEUCatalog_size\n        WHERE\n          { ?DEUCatalog_uri \n                      a                     <http://www.w3.org/ns/dcat#Catalog> ;\n                      <http://www.w3.org/ns/dcat#dataset>  ?ds\n      }\n        }\n        } ORDER BY ?DEUCatalogRoot ?DEUCatalog_uri \n    ",
+        "hierarchy": [
+            {
+                "parent": "dataeuropa",
+                "child": "DEUCatalog"
+            }
+        ],
+        "properties": [
+            {
+                "class": "DEUCatalog",
+                "property": "DEUCatalog_uri",
+                "property_name": "DEU Catalog URI"
+            },
+            {
+                "class": "opTheme2",
+                "property": "opTheme2_uri",
+                "property_name": "OP Theme URI"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "DEUCatalog",
+                "text": "Publications Themes2"
+            },
+            {
+                "class": "opTheme2",
+                "text": "OP Theme2"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "DATASETS - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS20211020_2055beta - Catalogues of datasets of data.europa.eu"
+    },
+  
     {
         "class": "Publication Manifestation",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
