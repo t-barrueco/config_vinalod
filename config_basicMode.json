@@ -1535,13 +1535,23 @@
 			
         ],
         "parameters": [],
-        "filters": [],
-        "tooltip": [],
+        "filters": [
+            {
+                "property": "DEUCatalog_Modified",
+                "filter_type": "date"
+            }
+        ],
+        "tooltip": [
+            {
+                "property": "DEUCatalog_Modified",
+                "tooltip_text": "Date of last modification"
+            }
+        ],
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211021_0925beta - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS20211020_0910beta - Catalogues of datasets of data.europa.eu"
+        "option": "DATASETS20211021_0955beta - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
     },
 	
 	
