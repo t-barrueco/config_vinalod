@@ -1489,7 +1489,7 @@
   {
         "class": "dataeuropa",
         "endpoint_url": "https://data.europa.eu/sparql",
-        "query": "SELECT DISTINCT \"Data catalog\" as ?DEUCatalogRoot ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_size ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri)\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  }     { SELECT  ?DEUCatalog_uri count(distinct ?ds) as ?DEUCatalog_size\n        WHERE\n          { ?DEUCatalog_uri \n                      a                     <http://www.w3.org/ns/dcat#Catalog> ;\n                      <http://www.w3.org/ns/dcat#dataset>  ?ds\n      }\n        }\n        } ORDER BY ?DEUCatalogRoot ?DEUCatalog_uri \n    ",
+        "query": "SELECT DISTINCT \"Data catalog\" as ?DEUCatalogRoot ?DEUCatalogModified ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_size ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri)\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalogModified    { SELECT  ?DEUCatalog_uri count(distinct ?ds) as ?DEUCatalog_size\n        WHERE\n          { ?DEUCatalog_uri \n                      a                     <http://www.w3.org/ns/dcat#Catalog> ;\n                      <http://www.w3.org/ns/dcat#dataset>  ?ds\n      }\n        }\n        } ORDER BY ?DEUCatalogRoot ?DEUCatalog_uri \n    ",
         "hierarchy": [
             {
                 "parent": "dataeuropa",
@@ -1512,8 +1512,18 @@
                 "property": "DEUTheme_uri",
                 "property_name": "DEU Theme URI"
             }
+			,
+            {
+                "class": "DEUCatalog",
+                "property": "DEUCatalogModified",
+                "property_name": "DEU Catalog modification date"
+            }
         ],
         "classes_text": [
+		    {
+                "class": "dataeuropa",
+                "text": "data service"
+            },
             {
                 "class": "DEUCatalog",
                 "text": "Open data Catalog"
@@ -1522,6 +1532,7 @@
                 "class": "DEUTheme",
                 "text": "Theme of open data"
             }
+			
         ],
         "parameters": [],
         "filters": [],
@@ -1529,8 +1540,8 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211020_2134beta - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS20211020_2134beta - Catalogues of datasets of data.europa.eu"
+        "option": "DATASETS20211021_0905beta - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS20211020_0905beta - Catalogues of datasets of data.europa.eu"
     },
   
     {
