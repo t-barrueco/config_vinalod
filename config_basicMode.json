@@ -940,17 +940,7 @@
             }
         ],
         "parameters": [],
-        "filters": [
-            {
-                "property": "corporateBody_country",
-                "filter_type": "dropdown"
-            },
-            {
-                "property": "corporateBody_location",
-                "filter_type": "dropdown",
-                "parent":"corporateBody_country"
-            }
-        ],
+        "filters": [],
         "tooltip": [
             {
                 "property": "corporateBody_country",
@@ -1056,7 +1046,7 @@
     {
         "class": "Directory Organization",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nSELECT DISTINCT ?directoryOrg ?membership ?directoryOrg_uri AS ?membership_directoryOrg ?membership_startDate ?membership_order\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n        euvoc:order ?membership_order;\n        euvoc:positionComplement ?membership;\n        euvoc:startDate ?membership_startDate;\n        euvoc:order ?membership_order.\n        ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n       } \n       filter(?directoryOrg_uri=<PARAMETER>).\n       FILTER(langMatches(lang(?membership), \"en\")).\n       FILTER(langMatches(lang(?directoryOrg), \"en\")).\n      }GROUP BY ?membership    \n    ",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nSELECT DISTINCT ?directoryOrg ?membership ?directoryOrg_uri AS ?membership_directoryOrg\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n       euvoc:positionComplement ?membership.\n       ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n       } \n    filter(?directoryOrg_uri=<PARAMETER>)\n    FILTER(langMatches(lang(?membership), \"en\")).\n    FILTER(langMatches(lang(?directoryOrg), \"en\")).\n    }GROUP BY ?membership\n",
         "hierarchy": [
             {
                 "parent": "directoryOrg",
@@ -1071,13 +1061,8 @@
             },
             {
                 "class": "membership",
-                "property": "membership_startDate",
-                "property_name": "Membership Start Date"
-            },
-            {
-                "class": "membership",
-                "property": "membership_order",
-                "property_name": "Membership Order"
+                "property": "membership_uri",
+                "property_name": "Membership Uri"
             }
         ],
         "classes_text": [
@@ -1091,26 +1076,8 @@
             }
         ],
         "parameters": [],
-        "filters": [
-            {
-                "property": "membership_startDate",
-                "filter_type": "date"
-            },
-            {
-                "property": "membership_order",
-                "filter_type": "number"
-            }
-        ],
-        "tooltip": [
-            {
-                "property": "membership_startDate",
-                "tooltip_text": "Start Date"
-            },
-            {
-                "property": "membership_order",
-                "tooltip_text": "Order number"
-            }
-        ],
+        "filters": [],
+        "tooltip": [],
         "function": "",
         "columns": [],
         "type": "TREE",
@@ -1120,7 +1087,7 @@
     {
         "class": "Membership Type",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX org: <http://www.w3.org/ns/org#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n    PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX resource: <http://publications.europa.eu/resource/>\n            SELECT DISTINCT ?membership ?membership_uri ?membership_startDate ?membership_endDate ?membership_order ?membership_positionStatusUri ?membership_positionStatus ?person ?person_uri ?person_id ?person_image ?person_citiz ?person_gender ?person_genderUri\n            where {{?membership_uri org:organization ?directoryOrg_uri;\n                       euvoc:startDate ?membership_startDate;\n                       euvoc:endDate ?membership_endDate;\n                       euvoc:order ?membership_order;\n                       euvoc:positionComplement ?membership;\n                       euvoc:positionStatus ?membership_positionStatusUri.\n                       #euvoc:roleQualification ?roleQualification_uri;\n                       #euvoc:contactPoint ?contactPoint.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?membership_positionStatusUri skos:prefLabel ?membership_positionStatus.\n                    ?person_uri org:hasMembership ?membership_uri;\n                    #            vcard:hasGender ?person_genderUri;\n                                foaf:name ?person.\n                    #?person_genderUri skos:prefLabel ?person_gender.\n                    OPTIONAL{\n                        ?person_uri foaf:img ?person_image;\n                                    resource:personcitizenship ?person_citizUri.\n                        ?person_citizUri skos:prefLabel ?person_citiz.\n                        FILTER(langMatches(lang(?person_citiz), \"en\")).\n                        BIND (STRBEFORE(STRAFTER( STR(?person_image), \"https://www.europarl.europa.eu/mepphoto/\" ), \".jpg\" ) AS ?person_id)\n                        #BIND (regex(STR(?person_img), \"^https\", \"i\") AS ?str_event)\n                    }\n                    } \n                   FILTER(STR(?membership)=\"PARAMETER\").\n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   FILTER(langMatches(lang(?membership), \"en\")).\n                   FILTER(langMatches(lang(?membership_positionStatus), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   #FILTER(langMatches(lang(?person_gender), \"en\")).\n                   }ORDER BY ?membership_order ?person\n",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX org: <http://www.w3.org/ns/org#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n    PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX resource: <http://publications.europa.eu/resource/>\n        SELECT ?membership ?membership_uri ?person ?person_uri (?person AS ?person_name) ?person_gender ?person_genderUri ?person_citiz ?person_image ?person_id\n         where {{?membership_uri org:organization ?directoryOrg_uri;\n                       euvoc:positionComplement ?membership.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?person_uri org:hasMembership ?membership_uri;\n                                foaf:name ?person.\n                    OPTIONAL{\n                        ?person_uri foaf:img ?person_image;\n                                    resource:personcitizenship ?person_citizUri.\n                        ?person_citizUri skos:prefLabel ?person_citiz.\n                        FILTER(langMatches(lang(?person_citiz), \"en\")).\n                        BIND (STRBEFORE(STRAFTER( STR(?person_image), \"https://www.europarl.europa.eu/mepphoto/\" ), \".jpg\" ) AS ?person_id)\n                        #BIND (regex(STR(?person_img), \"^https\", \"i\") AS ?str_event)\n                    }\n                    } \n                   FILTER(STR(?membership)='PARAMETER').\n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   FILTER(langMatches(lang(?membership), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   }",
         "hierarchy": [
             {
                 "parent": "membership",
@@ -1134,34 +1101,14 @@
                 "property_name": "Membership URI"
             },
             {
-                "class": "membership",
-                "property": "membership_startDate",
-                "property_name": "Membership Start Date"
-            },
-            {
-                "class": "membership",
-                "property": "membership_endDate",
-                "property_name": "Membership End Date"
-            },
-            {
-                "class": "membership",
-                "property": "membership_order",
-                "property_name": "Membership Order"
-            },
-            {
-                "class": "membership",
-                "property": "membership_positionStatusUri",
-                "property_name": "Membership Position Status URI"
-            },
-            {
-                "class": "membership",
-                "property": "membership_positionStatus",
-                "property_name": "Membership Position Status"
-            },
-            {
                 "class": "person",
                 "property": "person_uri",
                 "property_name": "Person URI"
+            },
+            {
+                "class": "person",
+                "property": "person_name",
+                "property_name": "Person Name"
             },
             {
                 "class": "person",
@@ -1204,8 +1151,18 @@
                 "property": "membership_directoryOrg"
             }
         ],
-        "filters": [],
-        "tooltip": [],
+        "filters": [
+            {
+                "property": "person_name",
+                "filter_type": "text"
+            }
+        ],
+        "tooltip": [
+            {
+                "property": "person_citiz",
+                "tooltip_text": "Citizenship"
+            }
+        ],
         "function": "",
         "columns": [],
         "type": "TREE",
@@ -1621,5 +1578,541 @@
         "type": "TABLE",
         "option": "Table membership and persons",
         "option_text": "Table membership and persons"
+    },
+    {
+        "class": "Class",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n    PREFIX owl:  <http://www.w3.org/2002/07/owl#>\n    \n    SELECT DISTINCT ?class ?class_uri ?class_comment ?subclass ?subclass_uri ?subclass_comment\n    WHERE \n    {\n    {?subclass_uri rdfs:subClassOf ?class_uri;\n        rdfs:label ?subclass;\n        rdfs:comment ?subclass_comment.\n    ?class_uri rdfs:label ?class;\n        rdfs:comment ?class_comment.\n     }filter(?class_uri=<PARAMETER>)\n     }ORDER BY ?mainEULawClass ?subclass\n     \n    ",
+        "hierarchy": [
+            {
+                "parent": "class",
+                "child": "subclass"
+            }
+        ],
+        "properties": [
+            {
+                "class": "class",
+                "property": "class_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "class",
+                "property": "class_comment",
+                "property_name": "Comment"
+            },
+            {
+                "class": "subclass",
+                "property": "subclass_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "subclass",
+                "property": "subclass_comment",
+                "property_name": "Comment"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "class",
+                "text": "Class"
+            },
+            {
+                "class": "subclass",
+                "text": "Class"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [
+            {
+                "property": "class_comment",
+                "tooltip_text": "Comment"
+            },
+            {
+                "property": "subclass_comment",
+                "tooltip_text": "Comment"
+            }
+        ],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "Subclasses from Classes",
+        "option_text": "Subclasses from Classes"
+    },
+    {
+        "class": "Class",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\n    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n    PREFIX : <http://publications.europa.eu/ontology/cdm#>\n\n    SELECT DISTINCT ?class ?class_uri ?class_comment ?property ?property_uri ?property_comment\n    WHERE \n    {{ ?property_uri rdfs:domain ?class_uri;\n         rdfs:label ?property;\n         rdfs:comment ?property_comment.\n    ?class_uri rdfs:label ?class;\n        rdfs:comment ?class_comment. \n    }filter(?class_uri=<PARAMETER>)\n    }ORDER BY ?class ?property\n    ",
+        "hierarchy": [
+            {
+                "parent": "class",
+                "child": "property"
+            }
+        ],
+        "properties": [
+            {
+                "class": "class",
+                "property": "class_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "class",
+                "property": "class_comment",
+                "property_name": "Comment"
+            },
+            {
+                "class": "property",
+                "property": "property_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "property",
+                "property": "property_comment",
+                "property_name": "Comment"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "class",
+                "text": "Class"
+            },
+            {
+                "class": "property",
+                "text": "Property"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [
+            {
+                "property": "class_comment",
+                "tooltip_text": "Comment"
+            },
+            {
+                "property": "property_comment",
+                "tooltip_text": "Comment"
+            }
+        ],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "Properties from Classes",
+        "option_text": "Properties from Classes"
+    },
+    {
+        "class": "mainEULawClass",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\n    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n    PREFIX owl:  <http://www.w3.org/2002/07/owl#>\n    \n    SELECT DISTINCT ?mainEULawClass ?mainEULawClass_uri ?subclass ?subclass_uri ?subclass_label ?subclass_comment\n    WHERE \n    {\n    {?subclass_uri rdfs:subClassOf ?mainEULawClass_uri;\n        rdfs:label ?subclass;\n        rdfs:comment ?subclass_comment.\n    ?mainEULawClass_uri rdfs:label ?mainEULawClass \n     }filter(?mainEULawClass_uri=<http://publications.europa.eu/ontology/cdm#resource_legal>)\n     }ORDER BY ?mainEULawClass ?subclass\n     \n    ",
+        "hierarchy": [
+            {
+                "parent": "mainEULawClass",
+                "child": "subclass"
+            }
+        ],
+        "properties": [
+            {
+                "class": "mainEULawClass",
+                "property": "mainEULawClass_uri",
+                "property_name": "Resource Legal URI"
+            },
+            {
+                "class": "subclass",
+                "property": "subclass_uri",
+                "property_name": "Uri"
+            },
+            {
+                "class": "subclass",
+                "property": "subclass_comment",
+                "property_name": "Comment"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "mainEULawClass",
+                "text": "Resource legal"
+            },
+            {
+                "class": "subclass",
+                "text": "Class"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [
+            {
+                "property": "subclass_comment",
+                "tooltip_text": "Comment"
+            }
+        ],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "EULaw Classes from Resource Legal",
+        "option_text": "EULaw Classes from Resource Legal"
+    },
+    {
+        "class": "mainEULawClass",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\n    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n    PREFIX : <http://publications.europa.eu/ontology/cdm#>\n\n    SELECT DISTINCT ?mainEULawClass ?mainEULawClass_uri ?property ?property_uri ?property_comment\n    WHERE \n    {{ ?property_uri rdfs:domain ?mainEULawClass_uri;\n         rdfs:label ?property;\n         rdfs:comment ?property_comment.\n    ?mainEULawClass_uri rdfs:label ?mainEULawClass.\n    }filter(?mainEULawClass_uri=<http://publications.europa.eu/ontology/cdm#resource_legal>)\n    }\n    ",
+        "hierarchy": [
+            {
+                "parent": "mainEULawClass",
+                "child": "property"
+            }
+        ],
+        "properties": [
+            {
+                "class": "mainEULawClass",
+                "property": "mainEULawClass_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "property",
+                "property": "property_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "property",
+                "property": "property_comment",
+                "property_name": "Comment"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "mainEULawClass",
+                "text": "Class"
+            },
+            {
+                "class": "property",
+                "text": "Property"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [
+            {
+                "property": "property_comment",
+                "tooltip_text": "Comment"
+            }
+        ],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "EULaw Properties from Resource Legal",
+        "option_text": "EULaw Properties from Resource Legal"
+    },
+    {
+        "class": "Property",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\nPREFIX  :     <http://publications.europa.eu/ontology/cdm#>\nPREFIX  rdfsyn: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \nPREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\nSELECT DISTINCT  ?property ?property_uri (STRAFTER(str(?typeClass_uri),'#') AS ?typeClass) ?typeClass_uri \nWHERE\n{ { ?s        ?property_uri  ?example_uri .\n    ?example_uri  rdfsyn:type  ?typeClass_uri.\n    ?property_uri <http://www.w3.org/2000/01/rdf-schema#label> ?property\n  }filter(?property_uri=<PARAMETER>)\n}\n    ",
+        "hierarchy": [
+            {
+                "parent": "property",
+                "child": "typeClass"
+            }
+        ],
+        "properties": [
+            {
+                "class": "typeClass",
+                "property": "typeClass_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "property",
+                "property": "property_uri",
+                "property_name": "URI"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "property",
+                "text": "Property"
+            },
+            {
+                "class": "typeClass",
+                "text": "Type Class"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "Example classes for property",
+        "option_text": "Example classes for property"
+    },
+    {
+        "class": "Type Class",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\n    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n            SELECT DISTINCT ?example ?example_uri ?typeClass_uri (STRAFTER(str(?typeClass_uri),'#') AS ?typeClass) \n            where {{?example_uri rdfs:type ?typeClass_uri;\n                    #?s ?p ?o;\n                      skos:prefLabel ?example.\n                    } \n                   filter(?typeClass_uri=<PARAMETER>)\n                   FILTER(langMatches(lang(?example), \"en\")).\n                   }LIMIT 20\n    ",
+        "hierarchy": [
+            {
+                "parent": "typeClass",
+                "child": "example"
+            }
+        ],
+        "properties": [
+            {
+                "class": "typeClass",
+                "property": "typeClass_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "example",
+                "property": "example_uri",
+                "property_name": "URI"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "typeClass",
+                "text": "Type Class"
+            },
+            {
+                "class": "example",
+                "text": "Example"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "Examples for classes",
+        "option_text": "Examples for classes"
+    },
+    {
+        "class": "Directory Organization",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?eurovocDomain ?eurovocDomain_uri ?directoryOrg_uri ?directoryOrg (?directoryOrg_uri AS ?eurovocDomain_directoryOrg)\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept/euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
+        "hierarchy": [
+            {
+                "parent": "directoryOrg",
+                "child": "eurovocDomain"
+            }
+        ],
+        "properties": [
+            {
+                "class": "directoryOrg",
+                "property": "directoryOrg_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "eurovocDomain",
+                "property": "eurovocDomain_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "eurovocDomain",
+                "property": "eurovocDomain_directoryOrg",
+                "property_name": "Eurovoc Domain Directory Organisation"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "directoryOrg",
+                "text": "Directory Organization"
+            },
+            {
+                "class": "eurovocDomain",
+                "text": "Eurovoc Domain"
+            }
+        ],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "Eurovoc Domains classification for parlamentary questions",
+        "option_text": "Eurovoc Domains classification for parlamentary questions"
+    },
+    {
+        "class": "Eurovoc Domain",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?text\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept/euvoc:domain ?eurovocDomain_uri.\n                            #cdm:work_is_about_concept_eurovoc ?eurovoc_uri.\n                            #cdm:resource_legal_id_celex ?parlamentaryQuestion;\n                            #cdm:work_date_document ?parlamentaryQuestion_date.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri;\n                    cdm:expression_title ?text.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
+        "hierarchy": [],
+        "properties": [],
+        "classes_text": [],
+        "parameters": [
+            {
+                "property": "eurovocDomain_directoryOrg"
+            }
+        ],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "WORDCLOUD",
+        "option": "Wordcloud by Eurovoc Domain for parlamentary questions",
+        "option_text": "Wordcloud by Eurovoc Domain for parlamentary questions"
+    },
+    {
+        "class": "Eurovoc Top Concept",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?text\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept ?eurovocTop_uri.\n                    ?eurovocTop_uri euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri;\n                    cdm:expression_title ?text.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocTop_uri skos:prefLabel ?eurovocTop.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER>).\n                   filter(?eurovocTop_uri=<PARAMETER3>).\n                   FILTER(langMatches(lang(?eurovocTop), \"en\")).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
+        "hierarchy": [],
+        "properties": [],
+        "classes_text": [],
+        "parameters": [
+            {
+                "property": "eurovocDomain_directoryOrg"
+            },
+            {
+                "property": "eurovocTop_eurovocDomain"
+            }
+        ],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "WORDCLOUD",
+        "option": "Wordcloud by Eurovoc Top Concepts for parlamentary questions",
+        "option_text": "Wordcloud by Eurovoc Top Concepts for parlamentary questions"
+    },
+    {
+        "class": "Eurovoc Domain",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?eurovocTop ?eurovocTop_uri (?directoryOrg_uri AS ?eurovocTop_directoryOrg) (?eurovocDomain_uri AS ?eurovocTop_eurovocDomain) ?eurovocDomain ?eurovocDomain_uri\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept ?eurovocTop_uri.\n                    ?eurovocTop_uri euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocTop_uri skos:prefLabel ?eurovocTop.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocTop), \"en\")).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
+        "hierarchy": [
+            {
+                "parent": "eurovocDomain",
+                "child": "eurovocTop"
+            }
+        ],
+        "properties": [
+            {
+                "class": "eurovocTop",
+                "property": "eurovocTop_uri",
+                "property_name": "URI"
+            },
+            {
+                "class": "eurovocTop",
+                "property": "eurovocTop_directoryOrg",
+                "property_name": "Directory Organisation"
+            },
+            {
+                "class": "eurovocTop",
+                "property": "eurovocTop_eurovocDomain",
+                "property_name": "Eurovoc Domain"
+            },
+            {
+                "class": "eurovocDomain",
+                "property": "eurovocDomain_uri",
+                "property_name": "URI"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "eurovocDomain",
+                "text": "Eurovoc Domain"
+            },
+            {
+                "class": "eurovocTop",
+                "text": "Eurovoc Top Concept"
+            }
+        ],
+        "parameters": [
+            {
+                "property": "eurovocDomain_directoryOrg"
+            }
+        ],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "Eurovoc Concepts by Eurovoc Domain for parlamentary questions",
+        "option_text": "Eurovoc Concepts by Eurovoc Domain for parlamentary questions"
+    },
+    {
+        "class": "Eurovoc Top Concept",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?text\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept ?eurovocTop_uri.\n                    ?eurovocTop_uri euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri;\n                    cdm:expression_title ?text.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocTop_uri skos:prefLabel ?eurovocTop.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER3>).\n                   filter(?eurovocTop_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocTop), \"en\")).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
+        "hierarchy": [],
+        "properties": [],
+        "classes_text": [],
+        "parameters": [
+            {
+                "property": "eurovocTop_directoryOrg"
+            },
+            {
+                "property": "eurovocTop_eurovocDomain"
+            }
+        ],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "WORDCLOUD",
+        "option": "Wordcloud by Eurovoc Top Concepts for parlamentary questions",
+        "option_text": "Wordcloud by Eurovoc Top Concepts for parlamentary questions"
+    },
+    {
+        "class": "dataeuropa",
+        "endpoint_url": "https://data.europa.eu/sparql",
+        "query": "SELECT DISTINCT \"Data catalog\" as ?DEUCatalogRoot ?DEUCatalog_Modified ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_size ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri)\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified    { SELECT  ?DEUCatalog_uri count(distinct ?ds) as ?DEUCatalog_size\n        WHERE\n          { ?DEUCatalog_uri \n                      a                     <http://www.w3.org/ns/dcat#Catalog> ;\n                      <http://www.w3.org/ns/dcat#dataset>  ?ds\n      }\n        }\n        } ORDER BY ?DEUCatalogRoot ?DEUCatalog_uri \n    ",
+        "hierarchy": [
+            {
+                "parent": "dataeuropa",
+                "child": "DEUCatalog"
+            }
+        ],
+        "properties": [
+            {
+                "class": "dataeuropa",
+                "property": "dataeuropa_uri",
+                "property_name": "web site of data europa"
+            },
+            {
+                "class": "DEUCatalog",
+                "property": "DEUCatalog_uri",
+                "property_name": "DEU Catalog URI"
+            },
+            {
+                "class": "DEUTheme",
+                "property": "DEUTheme_uri",
+                "property_name": "DEU Theme URI"
+            },
+            {
+                "class": "DEUCatalog",
+                "property": "DEUCatalog_Modified",
+                "property_name": "DEU Catalog modification date"
+            }
+        ],
+        "classes_text": [
+            {
+                "class": "dataeuropa",
+                "text": "data service"
+            },
+            {
+                "class": "DEUCatalog",
+                "text": "Catalog of open datasets"
+            },
+            {
+                "class": "DEUTheme",
+                "text": "Theme of open data"
+            }
+        ],
+        "parameters": [],
+        "filters": [
+            {
+                "property": "DEUCatalog_Modified",
+                "filter_type": "date"
+            }
+        ],
+        "tooltip": [
+            {
+                "property": "DEUCatalog_Modified",
+                "tooltip_text": "Date of last modification"
+            }
+        ],
+        "function": "",
+        "columns": [],
+        "type": "TREE",
+        "option": "DATASETS20211021_0955beta - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
     }
 ]
