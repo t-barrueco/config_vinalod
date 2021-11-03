@@ -1440,79 +1440,9 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS (Old version) - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
+        "option": "DATASETS20210831_1142 - Catalogues of datasets of data.europa.eu",
+        "option_text": "DATASETS20210831_1142 - Catalogues of datasets of data.europa.eu"
     },
-  {
-        "class": "dataeuropa",
-        "endpoint_url": "https://data.europa.eu/sparql",
-        "query": "SELECT DISTINCT \"Data catalog\" as ?DEUCatalogRoot ?DEUCatalog_Modified ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_size ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri)\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified    { SELECT  ?DEUCatalog_uri count(distinct ?ds) as ?DEUCatalog_size\n        WHERE\n          { ?DEUCatalog_uri \n                      a                     <http://www.w3.org/ns/dcat#Catalog> ;\n                      <http://www.w3.org/ns/dcat#dataset>  ?ds\n      }\n        }\n        } ORDER BY ?DEUCatalogRoot ?DEUCatalog_uri \n    ",
-        "hierarchy": [
-            {
-                "parent": "dataeuropa",
-                "child": "DEUCatalog"
-            }
-        ],
-        "properties": [
-            {
-                "class": "dataeuropa",
-                "property": "dataeuropa_uri",
-                "property_name": "web site of data europa"
-            },
-			{
-                "class": "DEUCatalog",
-                "property": "DEUCatalog_uri",
-                "property_name": "DEU Catalog URI"
-            },
-            {
-                "class": "DEUTheme",
-                "property": "DEUTheme_uri",
-                "property_name": "DEU Theme URI"
-            }
-			,
-            {
-                "class": "DEUCatalog",
-                "property": "DEUCatalog_Modified",
-                "property_name": "DEU Catalog modification date"
-            }
-        ],
-        "classes_text": [
-		    {
-                "class": "dataeuropa",
-                "text": "data service"
-            },
-            {
-                "class": "DEUCatalog",
-                "text": "Catalog of open datasets"
-            },
-            {
-                "class": "DEUTheme",
-                "text": "Theme of open data"
-            }
-			
-        ],
-        "parameters": [],
-        "filters": [
-            {
-                "property": "DEUCatalog_Modified",
-                "filter_type": "date"
-            }
-        ],
-        "tooltip": [
-            {
-                "property": "DEUCatalog_Modified",
-                "tooltip_text": "Date of last modification"
-            }
-        ],
-        "function": "",
-        "columns": [],
-        "type": "TREE",
-        "option": "DATASETS20211021_0955beta - Catalogues of datasets of data.europa.eu",
-        "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
-    },
-	
-	
-  
     {
         "class": "Publication Manifestation",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
@@ -2116,3 +2046,4 @@
         "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
     }
 ]
+
