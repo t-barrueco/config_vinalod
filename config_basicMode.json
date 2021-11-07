@@ -221,7 +221,7 @@
         "columns": [],
         "type": "TREE",
         "option": "OP Themes and publication author",
-        "option_text": "OP Themes and publication author"
+        "option_text": "This is the long explanation of OP Themes and publication author"
     },
     {
         "class": "eurovoc",
@@ -766,7 +766,7 @@
     {
         "class": "Continents",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n            PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n            PREFIX dcterms: <http://purl.org/dc/terms/>\n            PREFIX geo: <http://www.opengis.net/ont/geosparql#>\n            PREFIX authority: <http://publications.europa.eu/ontology/authority/>\n            PREFIX org: <http://www.w3.org/ns/org#>\n                    SELECT DISTINCT ?continent ?continent_uri ?continentName ?continentName_uri ?country_uri ?country ?org ?org_code ?org_desc\n                    where {{?continentName_uri skos:prefLabel ?continentName;\n                               skos:inScheme ?continent_uri.\n                            ?continent_uri skos:prefLabel ?continent.\n                            ?country_uri geo:sfWithin ?continentName_uri;\n                                         skos:prefLabel ?country;\n                                         authority:deprecated ?deprecated.\n                            OPTIONAL {\n                                    ?country_uri org:hasMembership ?o.\n                                    ?o org:organization ?org_code.\n                                    ?org_code authority:deprecated ?deprecated2;\n                                              authority:authority-code ?org;\n                                              skos:prefLabel ?org_desc.\n                                    filter(?deprecated2=\"false\").\n                                    FILTER(langMatches(lang(?org_desc), \"en\")).\n                            }\n                            } \n                           filter(?continent_uri=<http://publications.europa.eu/resource/authority/continent>).\n                           FILTER(langMatches(lang(?continent), \"en\")).\n                           FILTER(langMatches(lang(?continentName), \"en\")).\n                           FILTER(langMatches(lang(?country), \"en\")).\n                           filter(?deprecated=\"false\").\n                           }ORDER BY ?continent ?continentName ?country ?org",
+        "query": "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n            PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n            PREFIX dcterms: <http://purl.org/dc/terms/>\n            PREFIX geo: <http://www.opengis.net/ont/geosparql#>\n            PREFIX authority: <http://publications.europa.eu/ontology/authority/>\n            PREFIX org: <http://www.w3.org/ns/org#>\n                    SELECT DISTINCT ?continent ?continent_uri ?continentName ?continentName_uri ?country_uri ?country ?org ?org_uri ?org_desc\n                    where {{?continentName_uri skos:prefLabel ?continentName;\n                               skos:inScheme ?continent_uri.\n                            ?continent_uri skos:prefLabel ?continent.\n                            ?country_uri geo:sfWithin ?continentName_uri;\n                                         skos:prefLabel ?country;\n                                         authority:deprecated ?deprecated.\n                            OPTIONAL {\n                                    ?country_uri org:hasMembership ?o.\n                                    ?o org:organization ?org_uri.\n                                    ?org_uri authority:deprecated ?deprecated2;\n                                              authority:authority-code ?org;\n                                              skos:prefLabel ?org_desc.\n                                    filter(?deprecated2=\"false\").\n                                    FILTER(langMatches(lang(?org_desc), \"en\")).\n                            }\n                            } \n                           filter(?continent_uri=<http://publications.europa.eu/resource/authority/continent>).\n                           FILTER(langMatches(lang(?continent), \"en\")).\n                           FILTER(langMatches(lang(?continentName), \"en\")).\n                           FILTER(langMatches(lang(?country), \"en\")).\n                           filter(?deprecated=\"false\").\n                           }ORDER BY ?continent ?continentName ?country ?org",
         "hierarchy": [
             {
                 "parent": "continent",
@@ -804,7 +804,7 @@
             },
             {
                 "class": "org",
-                "property": "org_code",
+                "property": "org_uri",
                 "property_name": "ORG Code"
             }
         ],
@@ -838,7 +838,7 @@
     {
         "class": "Organisation",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n            PREFIX dcterms: <http://purl.org/dc/terms/>\n            PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n            PREFIX authority: <http://publications.europa.eu/ontology/authority/>\n                    SELECT DISTINCT ?org ?org_code ?org_desc ?treaty ?startDate ?endDate ?replaces\n                    where {{?org_code skos:prefLabel ?org_desc;\n                                      authority:authority-code ?org;\n                                      euvoc:startDate ?startDate.\n                            OPTIONAL {\n                            ?org_code euvoc:endDate ?endDate.\n                            }\n                            OPTIONAL{\n                            ?org_code euvoc:legallyBasedOnTreaty ?treaty_code.\n                            ?treaty_code skos:prefLabel ?treaty.\n                            FILTER(langMatches(lang(?treaty), \"en\")).\n                            }\n                            OPTIONAL{\n                            ?org_code dcterms:replaces ?replaces.\n                            }\n                            } \n                           filter(?org_code=<PARAMETER>).\n                           FILTER(langMatches(lang(?org_desc), \"en\")).\n                           }",
+        "query": "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n            PREFIX dcterms: <http://purl.org/dc/terms/>\n            PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n            PREFIX authority: <http://publications.europa.eu/ontology/authority/>\n                    SELECT DISTINCT ?org ?org_uri ?org_desc ?treaty ?startDate ?endDate ?replaces\n                    where {{?org_uri skos:prefLabel ?org_desc;\n                                      authority:authority-code ?org;\n                                      euvoc:startDate ?startDate.\n                            OPTIONAL {\n                            ?org_uri euvoc:endDate ?endDate.\n                            }\n                            OPTIONAL{\n                            ?org_uri euvoc:legallyBasedOnTreaty ?treaty_code.\n                            ?treaty_code skos:prefLabel ?treaty.\n                            FILTER(langMatches(lang(?treaty), \"en\")).\n                            }\n                            OPTIONAL{\n                            ?org_uri dcterms:replaces ?replaces.\n                            }\n                            } \n                           filter(?org_uri=<PARAMETER>).\n                           FILTER(langMatches(lang(?org_desc), \"en\")).\n                           }",
         "hierarchy": [],
         "properties": [
             {
@@ -848,7 +848,7 @@
             },
             {
                 "class": "org",
-                "property": "org_code",
+                "property": "org_uri",
                 "property_name": "ORG Code"
             },
             {
@@ -940,7 +940,17 @@
             }
         ],
         "parameters": [],
-        "filters": [],
+        "filters": [
+            {
+                "property": "corporateBody_country",
+                "filter_type": "dropdown"
+            },
+            {
+                "property": "corporateBody_location",
+                "filter_type": "dropdown",
+                "parent": "corporateBody_country"
+            }
+        ],
         "tooltip": [
             {
                 "property": "corporateBody_country",
@@ -1238,7 +1248,7 @@
         "columns": [],
         "type": "TREE",
         "option": "OP Themes children",
-        "option_text": "OP Themes children"
+        "option_text": "This is the long explanation for OP Themes children"
     },
     {
         "class": "Publication Document",
@@ -2046,4 +2056,3 @@
         "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
     }
 ]
-
