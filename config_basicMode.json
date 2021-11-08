@@ -2117,7 +2117,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211108_2127 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211108_2229 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu"
     },
 	{
@@ -2133,7 +2133,7 @@
         "function": "",
         "columns": [],
         "type": "WORDCLOUD",
-        "option": "Wordcloud testing 20211108_1431",
-        "option_text": "Wordcloud testing for corporate body"
+        "option": "Wordcloud of the organisation",
+        "option_text": "This will show the most representing topics of the organisation"
     }
 ]
