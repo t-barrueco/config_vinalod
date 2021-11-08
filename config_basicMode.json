@@ -2117,13 +2117,13 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211108_1432 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211108_1442 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu"
     },
 	{
         "class": "corporateBody",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "select ?prefLabel as ?text { ?eurovoc <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') ?work <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovoc. optional{?eurovoc <http://www.w3.org/2004/02/skos/core#broader> ?eurovoc.} ?work <http://publications.europa.eu/ontology/cdm#work_authored_by_agent> <PARAMETER>}limit 9999",
+        "query": "SELECT ?prefLabel as ?text { ?eurovoc <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') ?work <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovoc. optional{?eurovoc <http://www.w3.org/2004/02/skos/core#broader> ?eurovoc.} ?work <http://publications.europa.eu/ontology/cdm#work_authored_by_agent> <PARAMETER>}limit 9999",
         "hierarchy": [],
         "properties": [],
         "classes_text": [],
