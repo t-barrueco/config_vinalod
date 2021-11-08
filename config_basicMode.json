@@ -2119,5 +2119,28 @@
         "type": "TREE",
         "option": "DATASETS20211108_0858 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu"
-    }
+    },
+	{
+        "class": "test class",
+        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
+        "query": "\select ?prefLabel as ?text
+{
+?eurovoc <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en')
+?work <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovoc.
+optional{?eurovoc <http://www.w3.org/2004/02/skos/core#broader> ?eurovoc.}
+?work <http://publications.europa.eu/ontology/cdm#work_authored_by_agent> <http://publications.europa.eu/resource/authority/corporate-body/MARE>
+}
+limit 9999",
+        "hierarchy": [],
+        "properties": [],
+        "classes_text": [],
+        "parameters": [],
+        "filters": [],
+        "tooltip": [],
+        "function": "",
+        "columns": [],
+        "type": "WORDCLOUD",
+        "option": "Wordcloud testing 20211108_1144",
+        "option_text": "Wordcloud testing"
+    },
 ]
