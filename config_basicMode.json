@@ -964,8 +964,8 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "WHOISWHO EURUN Suborganizations",
-        "option_text": "WHOISWHO EURUN Suborganizations"
+        "option": "European Union Institutions and bodies",
+        "option_text": "European Union Institutions and bodies"
     },
     {
         "class": "corporateBody",
@@ -2117,7 +2117,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211108_2229 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211108_2329 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu"
     },
 	{
