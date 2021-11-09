@@ -398,7 +398,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "NUTS Tree",
+        "option": "NUTS Tree (Nomenclature of Territorial Units for Statistics)",
         "option_text": "NUTS Tree"
     },
     {
@@ -2052,7 +2052,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211021_0955beta (TIME OUT)- Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS (TIME OUT)- Catalogues of datasets of data.europa.eu",
         "option_text": "DATASETS - Catalogues of datasets of data.europa.eu"
     },
 	{
@@ -2117,7 +2117,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211108_2329 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211109_0946 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu"
     },
 	{
