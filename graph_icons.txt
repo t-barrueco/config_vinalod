@@ -4,5 +4,5 @@ Membership Type	images/briefcase.svg
 Person	images/person_icon.svg
 OP Theme	images/publication.svg
 corporateBody	images/organization_icon.svg
-DEUCatalog	https://static.thenounproject.com/png/3972987-200.png
-dataeuropa	https://static.thenounproject.com/png/3422130-200.png
+Catalog of open datasets	https://static.thenounproject.com/png/3972987-200.png
+data service	https://static.thenounproject.com/png/3422130-200.png
