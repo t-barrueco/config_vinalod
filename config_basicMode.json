@@ -2058,7 +2058,7 @@
 	{
         "class": "dataeuropa",
         "endpoint_url": "https://data.europa.eu/sparql",
-        "query": "SELECT DISTINCT \"Data catalog\" as ?DEUCatalogRoot ?DEUCatalog_Modified ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog  ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri)\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified    { SELECT  ?DEUCatalog_uri \n        WHERE\n          { ?DEUCatalog_uri a <http://www.w3.org/ns/dcat#Catalog>}\n        }\n        } ORDER BY ?DEUCatalogRoot ?DEUCatalog_uri \n    ",
+        "query": "SELECT DISTINCT \"Data catalog\" as ?DEUCatalogRoot ?DEUCatalog_Modified ?DEUCatalog_Language ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog  ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri)\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified. ?DEUCatalog_uri <http://purl.org/dc/terms/language> ?DEUCatalog_Language   { SELECT  ?DEUCatalog_uri \n        WHERE\n          { ?DEUCatalog_uri a <http://www.w3.org/ns/dcat#Catalog>}\n        }\n        } ORDER BY ?DEUCatalogRoot ?DEUCatalog_uri \n    ",
         "hierarchy": [
             {
                 "parent": "dataeuropa",
@@ -2085,6 +2085,12 @@
                 "class": "DEUCatalog",
                 "property": "DEUCatalog_Modified",
                 "property_name": "DEU Catalog modification date"
+            }
+			,
+            {
+                "class": "DEUCatalog",
+                "property": "DEUCatalog_Language",
+                "property_name": "DEU Catalog Language"
             }
         ],
         "classes_text": [
@@ -2117,7 +2123,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211109_0946 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211109_1346 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu"
     },
 	{
