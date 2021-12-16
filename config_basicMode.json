@@ -972,13 +972,13 @@
         "columns": [],
         "type": "TREE",
         "option": "European Union Institutions and bodies",
-        "option_text": "European Union Institutions and bodies",
+        "option_text": "This will list the European Union Institutions and bodies",
         "collection":"eu_whoiswho"
     },
     {
         "class": "corporateBody",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX org: <http://www.w3.org/ns/org#>\n    PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\n    PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>\n    PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>\n            SELECT DISTINCT ?corporateBody ?directoryOrg ?directoryOrg_uri ?directoryOrg_order ?directoryOrg_protocolLevel ?directoryOrg_email ?directoryOrg_telephone ?directoryOrg_locality ?directoryOrg_postalCode ?directoryOrg_streetAddress ?directoryOrg_homepage\n            where {{?corporateBody_uri skos:prefLabel ?corporateBody.\n                    ?directoryOrg_uri org:subOrganizationOf ?corporateBody_uri. \n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:order ?directoryOrg_order.\n                    }\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:protocolLevel ?directoryOrg_protocolLevel.\n                    }\n                    #OPTIONAL {\n                    #?directoryOrg_uri euvoc:contactPoint ?directoryOrg_contactPoint.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:hasEmail ?directoryOrg_email.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:hasTelephone ?directoryOrg_telephoneBN.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:locality ?directoryOrg_locality.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:postal-code ?directoryOrg_postalCode.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:street-address ?directoryOrg_streetAddress.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint foaf:homepage ?directoryOrg_homepage.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_telephoneBN vcard:hasValue ?directoryOrg_telephone.  \n                    #}\n                    } \n                   filter(?corporateBody_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   }\n                   #ORDER BY ?whoiswhoOrg ?country ?location\n                   #LIMIT 50\n    \n",
+        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX org: <http://www.w3.org/ns/org#>\n    PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\n    PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>\n    PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>\n            SELECT DISTINCT ?corporateBody ?directoryOrg ?directoryOrg_uri ?directoryOrg_image ?directoryOrg_order ?directoryOrg_protocolLevel ?directoryOrg_email ?directoryOrg_telephone ?directoryOrg_locality ?directoryOrg_postalCode ?directoryOrg_streetAddress ?directoryOrg_homepage\n            where {{?corporateBody_uri skos:prefLabel ?corporateBody.\n                    ?directoryOrg_uri org:subOrganizationOf ?corporateBody_uri. \n ?corporateBody_uri foaf:depiction ?directoryOrg_image.\n                   ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:order ?directoryOrg_order.\n                    }\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:protocolLevel ?directoryOrg_protocolLevel.\n                    }\n                    #OPTIONAL {\n                    #?directoryOrg_uri euvoc:contactPoint ?directoryOrg_contactPoint.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:hasEmail ?directoryOrg_email.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:hasTelephone ?directoryOrg_telephoneBN.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:locality ?directoryOrg_locality.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:postal-code ?directoryOrg_postalCode.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint vcard:street-address ?directoryOrg_streetAddress.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint foaf:homepage ?directoryOrg_homepage.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_telephoneBN vcard:hasValue ?directoryOrg_telephone.  \n                    #}\n                    } \n                   filter(?corporateBody_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   }\n                   #ORDER BY ?whoiswhoOrg ?country ?location\n                   #LIMIT 50\n    \n",
         "hierarchy": [
             {
                 "parent": "corporateBody",
@@ -1000,6 +1000,11 @@
                 "class": "directoryOrg",
                 "property": "directoryOrg_protocolLevel",
                 "property_name": "Directory Organisation Protocol Level"
+            },
+			{
+                "class": "directoryOrg",
+                "property": "directoryOrg_image",
+                "property_name": "Corporate Body Image"
             },
             {
                 "class": "directoryOrg",
@@ -1059,8 +1064,8 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "WHOISWHO Suborganizations",
-        "option_text": "WHOISWHO Suborganizations"
+        "option": "EU Whoiswho Suborganizations",
+        "option_text": "eu Whoiswho Suborganizations"
     },
     {
         "class": "Directory Organization",
@@ -1373,8 +1378,8 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "Publications by CorporateBody",
-        "option_text": "Publications by CorporateBody"
+        "option": "Publications by corporate body",
+        "option_text": "This will show the list of publications of the corporate body"
     },
     {
         "class": "Directory Organization",
@@ -2137,7 +2142,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211109_1346 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211216_0945 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu",
         "collection":"eu_data"
     },
@@ -2154,7 +2159,7 @@
         "function": "",
         "columns": [],
         "type": "WORDCLOUD",
-        "option": "Wordcloud of the organisation",
-        "option_text": "This will show the most representing topics of the organisation"
+        "option": "Wordcloud of the corporate body",
+        "option_text": "This will show the most representing topics of the corporate body"
     }
 ]
