@@ -102,82 +102,7 @@
         "option": "WHOISWHO Person",
         "option_text": "WHOISWHO Person"
     },
-    {
-        "class": "Directory Organization",
-        "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX org: <http://www.w3.org/ns/org#>\n    PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\n    PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>\n    PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>\n            SELECT DISTINCT ?directoryOrg ?directoryOrg2 ?directoryOrg2_uri ?directoryOrg_order ?directoryOrg_protocolLevel ?directoryOrg_email ?directoryOrg_telephone ?directoryOrg_locality ?directoryOrg_postalCode ?directoryOrg_streetAddress ?directoryOrg_homepage\n            where {{?directoryOrg_uri org:hasSubOrganization ?directoryOrg2_uri.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?directoryOrg2_uri skos:prefLabel ?directoryOrg2;\n                                      euvoc:order ?directoryOrg_order;\n                                      euvoc:protocolLevel ?directoryOrg_protocolLevel.\n                                      #euvoc:contactPoint ?directoryOrg_contactPoint.\n                    #OPTIONAL {\n                    #?directoryOrg_uri2 euvoc:contactPoint ?directoryOrg_contactPoint2.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint2 vcard:hasEmail ?directoryOrg_email2.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint2 vcard:hasTelephone ?directoryOrg_telephoneBN2.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint2 vcard:locality ?directoryOrg_locality2.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint2 vcard:postal-code ?directoryOrg_postalCode2.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint2 vcard:street-address ?directoryOrg_streetAddress2.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_contactPoint2 foaf:homepage ?directoryOrg_homepage2.\n                    #}\n                    #OPTIONAL {\n                    #?directoryOrg_telephoneBN2 vcard:hasValue ?directoryOrg_telephone2.  \n                    #}\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?directoryOrg2), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   }\n                   #ORDER BY ?whoiswhoOrg ?country ?location\n                   #LIMIT 50\n    ",
-        "hierarchy": [
-            {
-                "parent": "directoryOrg",
-                "child": "directoryOrg2"
-            }
-        ],
-        "properties": [
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg2_uri",
-                "property_name": "Directory Organisation URI"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_order",
-                "property_name": "Directory Organisation Order"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_protocolLevel",
-                "property_name": "Directory Organisation Protocol Level"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_email",
-                "property_name": "Directory Organisation Email"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_telephone",
-                "property_name": "Directory Organisation Telephone"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_locality",
-                "property_name": "Directory Organisation Locality"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_postalCode",
-                "property_name": "Directory Organisation Postal Code"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_streetAddress",
-                "property_name": "Directory Organisation Street Address"
-            },
-            {
-                "class": "directoryOrg2",
-                "property": "directoryOrg_homepage",
-                "property_name": "Directory Organisation Homepage"
-            }
-        ],
-        "classes_text": [
-            {
-                "class": "directoryOrg",
-                "text": "Directory Organization"
-            },
-            {
-                "class": "directoryOrg2",
-                "text": "Directory Organization"
-            }
-        ],
-        "parameters": [],
-        "filters": [],
-        "tooltip": [],
-        "function": "",
-        "columns": [],
-        "type": "TREE",
-        "option": "EU Whoiswho directoryOrg second level",
-        "option_text": "EU Whoiswho directoryOrg second level"
-    },
+ 
     {
         "class": "OP Theme",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
@@ -2142,7 +2067,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211216_1710 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211216_1720 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu",
         "collection":"eu_data"
     },
