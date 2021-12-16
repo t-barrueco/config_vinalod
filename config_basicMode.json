@@ -887,7 +887,7 @@
     {
         "class": "eurun",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
-        "query": "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n PREFIX org: <http://www.w3.org/ns/org#>\n PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\n PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>\n PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n SELECT DISTINCT ?eurun ?eurun_uri ?eurun_image ?corporateBody ?corporateBody_uri ?corporateBody_image ?corporateBody_country ?corporateBody_countryUri ?corporateBody_location ?corporateBody_locationUri   \n where {?corporateBody_uri org:subOrganizationOf ?eurun_uri.\n ?eurun_uri skos:prefLabel ?eurun.\n ?eurun_uri foaf:depiction ?eurun_image.\n                    ?corporateBody_uri skos:prefLabel ?corporateBody.\n optional{?corporateBody_uri foaf:depiction ?corporateBody_image.\n ?corporateBody_uri geo:location ?corporateBody_locationUri.\n  ?corporateBody_locationUri skos:prefLabel ?corporateBody_location;\n geosparql:sfWithin ?corporateBody_countryUri.\n ?corporateBody_countryUri skos:prefLabel ?corporateBody_country \n FILTER(langMatches(lang(?corporateBody), \"en\"))\n FILTER(langMatches(lang(?corporateBody_location), \"en\"))\n FILTER(langMatches(lang(?corporateBody_country), \"en\")).\n } \n filter(?eurun_uri=<http://publications.europa.eu/resource/authority/corporate-body/EURUN>)\n FILTER(langMatches(lang(?eurun), \"en\"))\n }ORDER BY ?eurun ?corporateBody\n",
+        "query": "PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n PREFIX org: <http://www.w3.org/ns/org#>\n PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\n PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>\n PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n SELECT DISTINCT ?eurun ?eurun_uri ?eurun_image ?corporateBody ?corporateBody_uri ?corporateBody_image ?corporateBody_country ?corporateBody_countryUri ?corporateBody_location ?corporateBody_locationUri   \n where {?corporateBody_uri org:subOrganizationOf ?eurun_uri.\n ?eurun_uri skos:prefLabel ?eurun.\n ?eurun_uri foaf:depiction ?eurun_image.\n                    ?corporateBody_uri skos:prefLabel ?corporateBody.\n optional{?corporateBody_uri foaf:depiction ?corporateBody_image.\n ?corporateBody_uri geo:location ?corporateBody_locationUri.\n  ?corporateBody_locationUri skos:prefLabel ?corporateBody_location;\n geosparql:sfWithin ?corporateBody_countryUri.\n ?corporateBody_countryUri skos:prefLabel ?corporateBody_country \n FILTER(langMatches(lang(?corporateBody_location), \"en\"))\n FILTER(langMatches(lang(?corporateBody_country), \"en\")).\n ?corporateBody_uri euvoc:order ?orderOrg.} FILTER(langMatches(lang(?corporateBody), \"en\"))\n \n filter(?eurun_uri=<http://publications.europa.eu/resource/authority/corporate-body/EURUN>)\n FILTER(langMatches(lang(?eurun), \"en\"))\n }ORDER BY ?orderOrg",
         "hierarchy": [
             {
                 "parent": "eurun",
@@ -2142,7 +2142,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211216_1620 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211216_1630 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu",
         "collection":"eu_data"
     },
