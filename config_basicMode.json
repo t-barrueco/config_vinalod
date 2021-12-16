@@ -943,7 +943,7 @@
             },
             {
                 "class": "corporateBody",
-                "text": "corporateBody"
+                "text": "Directory Organization"
             }
         ],
         "parameters": [],
@@ -976,7 +976,7 @@
         "collection":"eu_whoiswho"
     },
     {
-        "class": "corporateBody",
+        "class": "Directory Organization",
         "endpoint_url": "https://publications.europa.eu/webapi/rdf/sparql",
         "query": "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n PREFIX org: <http://www.w3.org/ns/org#>\n PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n SELECT DISTINCT ?corporateBody ?directoryOrg ?directoryOrg_uri ?directoryOrg_image ?directoryOrg_order ?directoryOrg_protocolLevel ?directoryOrg_email ?directoryOrg_telephone ?directoryOrg_locality ?directoryOrg_postalCode ?directoryOrg_streetAddress ?directoryOrg_homepage\n            where {{?corporateBody_uri skos:prefLabel ?corporateBody.\n                    ?directoryOrg_uri org:subOrganizationOf ?corporateBody_uri. \n OPTIONAL {?directoryOrg_uri foaf:depiction ?directoryOrg_image.}\n                   ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:order ?directoryOrg_order.\n                    }\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:protocolLevel ?directoryOrg_protocolLevel.\n                    }\n                      #OPTIONAL {\n                    #?directoryOrg_contactPoint foaf:homepage ?directoryOrg_homepage.\n                    #}\n                      } \n                   filter(?corporateBody_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   }\n                   #ORDER BY ?whoiswhoOrg ?country ?location\n",
         "hierarchy": [
@@ -1040,7 +1040,7 @@
         "classes_text": [
             {
                 "class": "corporateBody",
-                "text": "corporateBody"
+                "text": "Directory Organization"
             },
             {
                 "class": "directoryOrg",
@@ -1064,7 +1064,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "EU Whoiswho Suborganizations",
+        "option": "EU Whoiswho Suborganizations (with logos)",
         "option_text": "eu Whoiswho Suborganizations"
     },
     {
@@ -2142,7 +2142,7 @@
         "function": "",
         "columns": [],
         "type": "TREE",
-        "option": "DATASETS20211216_1630 - Catalogues of datasets of data.europa.eu",
+        "option": "DATASETS20211216_1710 - Catalogues of datasets of data.europa.eu",
         "option_text": "Desription - DATASETS - Catalogues of datasets of data.europa.eu",
         "collection":"eu_data"
     },
