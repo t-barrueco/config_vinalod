@@ -117,7 +117,7 @@
     "option":"WHOISWHO Person",
     "option_text":"WHOISWHO Person",
     "collection":null,
-    "modelClass":null,
+    "modelClass":"http://www.w3.org/ns/org#Membership",
     "details":null,
     "askquery":null
   },
