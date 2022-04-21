@@ -826,7 +826,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220421-2228)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220421-2328)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1352,6 +1352,72 @@
         ]
       }
     ],
+    "askquery":null
+  },
+  { "class":"corporateBody",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"SELECT ?prefLabel as ?text { ?eurovoc <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') ?work <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovoc. optional{?eurovoc <http://www.w3.org/2004/02/skos/core#broader> ?eurovoc.} ?work <http://publications.europa.eu/ontology/cdm#work_authored_by_agent> <PARAMETER>}limit 9999",
+    "hierarchy":[
+
+    ],
+    "properties":[
+
+    ],
+    "classes_text":[
+
+    ],
+    "parameters":[
+
+    ],
+    "filters":[
+
+    ],
+    "tooltip":[
+
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"WORDCLOUD",
+    "option":"Wordcloud of the corporate body",
+    "option_text":"This will show the most representing topics of the corporate body (based on publications keywords)",
+    "collection":null,
+    "modelClass":null,
+    "details":null,
+    "askquery":null
+  },
+  { "class":"corporateBody",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"SELECT ?prefLabel as ?text where {?org <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') <PARAMETER> <http://www.w3.org/ns/org#hasSubOrganization>+ ?org }limit 9999",
+    "hierarchy":[
+
+    ],
+    "properties":[
+
+    ],
+    "classes_text":[
+
+    ],
+    "parameters":[
+
+    ],
+    "filters":[
+
+    ],
+    "tooltip":[
+
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"WORDCLOUD",
+    "option":"Wordcloud of the corporate body",
+    "option_text":"This will show the most representing topics of the corporate body (based on organisation chart)",
+    "collection":null,
+    "modelClass":null,
+    "details":null,
     "askquery":null
   },
   { "class":"Directory Organization",
@@ -1953,39 +2019,6 @@
     "option":"Catalogues of datasets of data.europa.eu",
     "option_text":"Desription - DATASETS - Catalogues of datasets of data.europa.eu",
     "collection":"eu_data",
-    "modelClass":null,
-    "details":null,
-    "askquery":null
-  },
-  { "class":"corporateBody",
-    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"SELECT ?prefLabel as ?text { ?eurovoc <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') ?work <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovoc. optional{?eurovoc <http://www.w3.org/2004/02/skos/core#broader> ?eurovoc.} ?work <http://publications.europa.eu/ontology/cdm#work_authored_by_agent> <PARAMETER>}limit 9999",
-    "hierarchy":[
-
-    ],
-    "properties":[
-
-    ],
-    "classes_text":[
-
-    ],
-    "parameters":[
-
-    ],
-    "filters":[
-
-    ],
-    "tooltip":[
-
-    ],
-    "function":"",
-    "columns":[
-
-    ],
-    "type":"WORDCLOUD",
-    "option":"Wordcloud of the corporate body",
-    "option_text":"This will show the most representing topics of the corporate body",
-    "collection":null,
     "modelClass":null,
     "details":null,
     "askquery":null
