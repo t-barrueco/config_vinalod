@@ -826,7 +826,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220421-2328)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220421-2338)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1413,7 +1413,7 @@
 
     ],
     "type":"WORDCLOUD",
-    "option":"Wordcloud of the corporate body",
+    "option":"Wordcloud of the corporate body (from chart)",
     "option_text":"This will show the most representing topics of the corporate body (based on organisation chart)",
     "collection":null,
     "modelClass":null,
