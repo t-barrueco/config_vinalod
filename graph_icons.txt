@@ -45,4 +45,5 @@ DET Level	images/classification.svg
 Eurovoc Concept	images/concept.svg
 Aligment	images/link.svg
 menuOption	images/options.svg
+http://data.europa.eu http://publications.europa.eu/code/images/scan/5000200-flag-cl.jpg
 http://data.europa.eu/88u/catalogue/european-union-open-data-portal http://publications.europa.eu/code/images/scan/5000200-flag-cl.jpg
