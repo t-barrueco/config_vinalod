@@ -793,7 +793,7 @@
       },
       {
         "class":"corporateBody",
-        "text":"Directory Organization"
+        "text":"corporateBody"
       }
     ],
     "parameters":[
@@ -826,7 +826,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220422-0023)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220422-0033)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
