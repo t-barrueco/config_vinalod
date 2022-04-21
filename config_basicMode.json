@@ -814,7 +814,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220421-1618: )This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220421-1718: )This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1765,7 +1765,7 @@
   {
     "class":"dataeuropa",
     "endpoint_url":"https://data.europa.eu/sparql",
-    "query":"\nPREFIX dcterms: <http://purl.org/dc/terms/>\nSELECT DISTINCT ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri) concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_uri ?DEUCatalog_Modified ?DEUCatalog_Language  \n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL\n  { ?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description\n  } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified. ?DEUCatalog_uri <http://purl.org/dc/terms/language> ?DEUCatalog_Language   { SELECT  ?DEUCatalog_uri \n        WHERE\n          { ?DEUCatalog_uri a <http://www.w3.org/ns/dcat#Catalog>}\n        }\n        } ORDER BY ?dataeuropa ?DEUCatalog\n",
+    "query":"SELECT DISTINCT ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri) concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_uri ?DEUCatalog_Modified ?DEUCatalog_Language\n  WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n  OPTIONAL{?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description} ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified. ?DEUCatalog_uri <http://purl.org/dc/terms/language> ?DEUCatalog_Language   { SELECT  ?DEUCatalog_uri \n        WHERE\n          { ?DEUCatalog_uri a <http://www.w3.org/ns/dcat#Catalog>. filter (! EXISTS { ?s <http://purl.org/dc/terms/hasPart> ?DEUCatalog_uri })}\n        }\n        } ORDER BY ?dataeuropa ?DEUCatalog",
     "hierarchy":[
       {
         "parent":"dataeuropa",
