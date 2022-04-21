@@ -826,158 +826,8 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220421-2348)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220422-0003)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
-    "modelClass":null,
-    "details":null,
-    "askquery":null
-  },
-  { "class":"Directory Organization",
-    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n PREFIX org: <http://www.w3.org/ns/org#>\n PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n SELECT DISTINCT ?corporateBody ?directoryOrg ?directoryOrg_uri ?directoryOrg_image ?directoryOrg_order ?directoryOrg_protocolLevel ?directoryOrg_email ?directoryOrg_telephone ?directoryOrg_locality ?directoryOrg_postalCode ?directoryOrg_streetAddress ?directoryOrg_homepage\n            where {{?corporateBody_uri skos:prefLabel ?corporateBody.\n                    ?directoryOrg_uri org:subOrganizationOf ?corporateBody_uri. \n OPTIONAL {?directoryOrg_uri foaf:depiction ?directoryOrg_image.}\n                   ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:order ?directoryOrg_order.\n                    }\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:protocolLevel ?directoryOrg_protocolLevel.\n                    }\n                      #OPTIONAL {\n                    #?directoryOrg_contactPoint foaf:homepage ?directoryOrg_homepage.\n                    #}\n                      } \n                   filter(?corporateBody_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   }\n                   #ORDER BY ?whoiswhoOrg ?country ?location",
-    "hierarchy":[
-      {
-        "parent":"corporateBody",
-        "child":"directoryOrg"
-      }
-    ],
-    "properties":[
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_uri",
-        "property_name":"Directory Organisation URI"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_order",
-        "property_name":"Directory Organisation Order"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_protocolLevel",
-        "property_name":"Directory Organisation Protocol Level"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_image",
-        "property_name":"Corporate Body Image"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_email",
-        "property_name":"Directory Organisation Email"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_telephone",
-        "property_name":"Directory Organisation Telephone"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_locality",
-        "property_name":"Directory Organisation Locality"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_postalCode",
-        "property_name":"Directory Organisation Postal Code"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_streetAddress",
-        "property_name":"Directory Organisation Street Address"
-      },
-      {
-        "class":"directoryOrg",
-        "property":"directoryOrg_homepage",
-        "property_name":"Directory Organisation Homepage"
-      }
-    ],
-    "classes_text":[
-      {
-        "class":"corporateBody",
-        "text":"Directory Organization"
-      },
-      {
-        "class":"directoryOrg",
-        "text":"Directory Organization"
-      }
-    ],
-    "parameters":[
-
-    ],
-    "filters":[
-      {
-        "property":"directoryOrg_locality",
-        "filter_type":"dropdown"
-      }
-    ],
-    "tooltip":[
-      {
-        "property":"directoryOrg_locality",
-        "tooltip_text":"Locality"
-      }
-    ],
-    "function":"",
-    "columns":[
-
-    ],
-    "type":"TREE",
-    "option":"EU Whoiswho Suborganizations",
-    "option_text":"eu Whoiswho Suborganizations",
-    "collection":null,
-    "modelClass":"http://publications.europa.eu/ontology/euvoc#Corporate",
-    "details":null,
-    "askquery":null
-  },
-  { "class":"Directory Organization",
-    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nSELECT DISTINCT ?directoryOrg ?membership ?directoryOrg_uri AS ?membership_directoryOrg\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n       euvoc:positionComplement ?membership.\n       ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n       } \n    filter(?directoryOrg_uri=<PARAMETER>)\n    FILTER(langMatches(lang(?membership), \"en\")).\n    FILTER(langMatches(lang(?directoryOrg), \"en\")).\n    }GROUP BY ?membership\n",
-    "hierarchy":[
-      {
-        "parent":"directoryOrg",
-        "child":"membership"
-      }
-    ],
-    "properties":[
-      {
-        "class":"membership",
-        "property":"membership_directoryOrg",
-        "property_name":"Membership Directory Organisation"
-      },
-      {
-        "class":"membership",
-        "property":"membership_uri",
-        "property_name":"Membership Uri"
-      }
-    ],
-    "classes_text":[
-      {
-        "class":"directoryOrg",
-        "text":"Directory Organization"
-      },
-      {
-        "class":"membership",
-        "text":"Membership Type"
-      }
-    ],
-    "parameters":[
-
-    ],
-    "filters":[
-
-    ],
-    "tooltip":[
-
-    ],
-    "function":"",
-    "columns":[
-
-    ],
-    "type":"TREE",
-    "option":"EU Whoiswho membership",
-    "option_text":"Show the EU Whoiswho membership",
-    "collection":null,
     "modelClass":null,
     "details":null,
     "askquery":null
@@ -1422,7 +1272,7 @@
   },
   { "class":"Directory Organization",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX resource: <http://publications.europa.eu/resource/>\nSELECT DISTINCT ?membership ?membership_order ?membership_positionStatus ?person ?person_image \n\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n                        euvoc:order ?membership_order;\n                        euvoc:positionComplement ?membership;\n                        euvoc:positionStatus ?membership_positionStatusUri.\n    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n    ?membership_positionStatusUri skos:prefLabel ?membership_positionStatus.\n    ?person_uri org:hasMembership ?membership_uri;\n                foaf:name ?person.\nOPTIONAL{\n    ?person_uri foaf:img ?person_image.\n    BIND (STRBEFORE(STRAFTER( STR(?person_image), \"https://www.europarl.europa.eu/mepphoto/\" ), \".jpg\" ) AS ?person_id)\n    }\n    } \nfilter(?directoryOrg_uri=<PARAMETER>).\nFILTER(langMatches(lang(?membership), \"en\")).\nFILTER(langMatches(lang(?membership_positionStatus), \"en\")).\nFILTER(langMatches(lang(?directoryOrg), \"en\")).\n}ORDER BY ?membership_order ?person",
+    "query":"#Directory Organization_1\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX resource: <http://publications.europa.eu/resource/>\nSELECT DISTINCT ?membership ?membership_order ?membership_positionStatus ?person ?person_image \n\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n                        euvoc:order ?membership_order;\n                        euvoc:positionComplement ?membership;\n                        euvoc:positionStatus ?membership_positionStatusUri.\n    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n    ?membership_positionStatusUri skos:prefLabel ?membership_positionStatus.\n    ?person_uri org:hasMembership ?membership_uri;\n                foaf:name ?person.\nOPTIONAL{\n    ?person_uri foaf:img ?person_image.\n    BIND (STRBEFORE(STRAFTER( STR(?person_image), \"https://www.europarl.europa.eu/mepphoto/\" ), \".jpg\" ) AS ?person_id)\n    }\n    } \nfilter(?directoryOrg_uri=<PARAMETER>).\nFILTER(langMatches(lang(?membership), \"en\")).\nFILTER(langMatches(lang(?membership_positionStatus), \"en\")).\nFILTER(langMatches(lang(?directoryOrg), \"en\")).\n}ORDER BY ?membership_order ?person",
     "hierarchy":[
       {
         "parent":"membership",
@@ -1479,7 +1329,7 @@
   },
   { "class":"Directory Organization",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX resource: <http://publications.europa.eu/resource/>\nSELECT DISTINCT ?membership ?membership_order ?membership_positionStatus ?person ?person_citiz ?person_image\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\neuvoc:order ?membership_order;\neuvoc:positionComplement ?membership;\neuvoc:positionStatus ?membership_positionStatusUri.\n?directoryOrg_uri skos:prefLabel ?directoryOrg.\n?membership_positionStatusUri skos:prefLabel ?membership_positionStatus.\n?person_uri org:hasMembership ?membership_uri;\nfoaf:name ?person.\nOPTIONAL{\n?person_uri resource:personcitizenship ?person_citizUri.\n?person_citizUri skos:prefLabel ?person_citiz.\nFILTER(langMatches(lang(?person_citiz), \"en\")).\n}\nOPTIONAL{\n?person_uri foaf:img ?person_image.\nBIND (STRBEFORE(STRAFTER( STR(?person_image), \"https://www.europarl.europa.eu/mepphoto/\" ), \".jpg\" ) AS ?person_id)\n}\n}\nfilter(?directoryOrg_uri=<PARAMETER>).\nFILTER(langMatches(lang(?membership), \"en\")).\nFILTER(langMatches(lang(?membership_positionStatus), \"en\")).\nFILTER(langMatches(lang(?directoryOrg), \"en\")).\n}ORDER BY ?membership_order ?person",
+    "query":"#Directory Organization_2\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX resource: <http://publications.europa.eu/resource/>\nSELECT DISTINCT ?membership ?membership_order ?membership_positionStatus ?person ?person_citiz ?person_image\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\neuvoc:order ?membership_order;\neuvoc:positionComplement ?membership;\neuvoc:positionStatus ?membership_positionStatusUri.\n?directoryOrg_uri skos:prefLabel ?directoryOrg.\n?membership_positionStatusUri skos:prefLabel ?membership_positionStatus.\n?person_uri org:hasMembership ?membership_uri;\nfoaf:name ?person.\nOPTIONAL{\n?person_uri resource:personcitizenship ?person_citizUri.\n?person_citizUri skos:prefLabel ?person_citiz.\nFILTER(langMatches(lang(?person_citiz), \"en\")).\n}\nOPTIONAL{\n?person_uri foaf:img ?person_image.\nBIND (STRBEFORE(STRAFTER( STR(?person_image), \"https://www.europarl.europa.eu/mepphoto/\" ), \".jpg\" ) AS ?person_id)\n}\n}\nfilter(?directoryOrg_uri=<PARAMETER>).\nFILTER(langMatches(lang(?membership), \"en\")).\nFILTER(langMatches(lang(?membership_positionStatus), \"en\")).\nFILTER(langMatches(lang(?directoryOrg), \"en\")).\n}ORDER BY ?membership_order ?person",
     "hierarchy":[
       {
         "parent":"membership",
@@ -1544,7 +1394,7 @@
   },
   { "class":"Directory Organization",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?eurovocDomain ?eurovocDomain_uri ?directoryOrg_uri ?directoryOrg (?directoryOrg_uri AS ?eurovocDomain_directoryOrg)\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept/euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
+    "query":"#Directory Organization_3\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?eurovocDomain ?eurovocDomain_uri ?directoryOrg_uri ?directoryOrg (?directoryOrg_uri AS ?eurovocDomain_directoryOrg)\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept/euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
     "hierarchy":[
       {
         "parent":"directoryOrg",
@@ -1594,6 +1444,156 @@
     "type":"TREE",
     "option":"Eurovoc Domains classification for parlamentary questions",
     "option_text":"Eurovoc Domains classification for parlamentary questions",
+    "collection":null,
+    "modelClass":null,
+    "details":null,
+    "askquery":null
+  },
+  { "class":"Directory Organization",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"#Directory Organization_4\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n PREFIX org: <http://www.w3.org/ns/org#>\n PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\n SELECT DISTINCT ?corporateBody ?directoryOrg ?directoryOrg_uri ?directoryOrg_image ?directoryOrg_order ?directoryOrg_protocolLevel ?directoryOrg_email ?directoryOrg_telephone ?directoryOrg_locality ?directoryOrg_postalCode ?directoryOrg_streetAddress ?directoryOrg_homepage\n            where {{?corporateBody_uri skos:prefLabel ?corporateBody.\n                    ?directoryOrg_uri org:subOrganizationOf ?corporateBody_uri. \n OPTIONAL {?directoryOrg_uri foaf:depiction ?directoryOrg_image.}\n                   ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:order ?directoryOrg_order.\n                    }\n                    OPTIONAL {\n                    ?directoryOrg_uri euvoc:protocolLevel ?directoryOrg_protocolLevel.\n                    }\n                      #OPTIONAL {\n                    #?directoryOrg_contactPoint foaf:homepage ?directoryOrg_homepage.\n                    #}\n                      } \n                   filter(?corporateBody_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   }\n                   #ORDER BY ?whoiswhoOrg ?country ?location",
+    "hierarchy":[
+      {
+        "parent":"corporateBody",
+        "child":"directoryOrg"
+      }
+    ],
+    "properties":[
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_uri",
+        "property_name":"Directory Organisation URI"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_order",
+        "property_name":"Directory Organisation Order"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_protocolLevel",
+        "property_name":"Directory Organisation Protocol Level"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_image",
+        "property_name":"Corporate Body Image"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_email",
+        "property_name":"Directory Organisation Email"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_telephone",
+        "property_name":"Directory Organisation Telephone"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_locality",
+        "property_name":"Directory Organisation Locality"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_postalCode",
+        "property_name":"Directory Organisation Postal Code"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_streetAddress",
+        "property_name":"Directory Organisation Street Address"
+      },
+      {
+        "class":"directoryOrg",
+        "property":"directoryOrg_homepage",
+        "property_name":"Directory Organisation Homepage"
+      }
+    ],
+    "classes_text":[
+      {
+        "class":"corporateBody",
+        "text":"Directory Organization"
+      },
+      {
+        "class":"directoryOrg",
+        "text":"Directory Organization"
+      }
+    ],
+    "parameters":[
+
+    ],
+    "filters":[
+      {
+        "property":"directoryOrg_locality",
+        "filter_type":"dropdown"
+      }
+    ],
+    "tooltip":[
+      {
+        "property":"directoryOrg_locality",
+        "tooltip_text":"Locality"
+      }
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"TREE",
+    "option":"EU Whoiswho Suborganizations",
+    "option_text":"eu Whoiswho Suborganizations",
+    "collection":null,
+    "modelClass":"http://publications.europa.eu/ontology/euvoc#Corporate",
+    "details":null,
+    "askquery":null
+  },
+  { "class":"Directory Organization",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"#Directory Organization_5\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX org: <http://www.w3.org/ns/org#>\nPREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>\nSELECT DISTINCT ?directoryOrg ?membership ?directoryOrg_uri AS ?membership_directoryOrg\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n       euvoc:positionComplement ?membership.\n       ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n       } \n    filter(?directoryOrg_uri=<PARAMETER>)\n    FILTER(langMatches(lang(?membership), \"en\")).\n    FILTER(langMatches(lang(?directoryOrg), \"en\")).\n    }GROUP BY ?membership\n",
+    "hierarchy":[
+      {
+        "parent":"directoryOrg",
+        "child":"membership"
+      }
+    ],
+    "properties":[
+      {
+        "class":"membership",
+        "property":"membership_directoryOrg",
+        "property_name":"Membership Directory Organisation"
+      },
+      {
+        "class":"membership",
+        "property":"membership_uri",
+        "property_name":"Membership Uri"
+      }
+    ],
+    "classes_text":[
+      {
+        "class":"directoryOrg",
+        "text":"Directory Organization"
+      },
+      {
+        "class":"membership",
+        "text":"Membership Type"
+      }
+    ],
+    "parameters":[
+
+    ],
+    "filters":[
+
+    ],
+    "tooltip":[
+
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"TREE",
+    "option":"EU Whoiswho membership",
+    "option_text":"Show the EU Whoiswho membership",
     "collection":null,
     "modelClass":null,
     "details":null,
