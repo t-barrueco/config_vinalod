@@ -814,7 +814,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220421-1718: )This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220421-2018: )This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1781,7 +1781,7 @@
       {
         "class":"DEUCatalog",
         "property":"DEUCatalog_uri",
-        "property_name":"DEU Catalog URI"
+        "property_name":"URI"
       },
       {
         "class":"DEUCatalog",
@@ -3177,7 +3177,7 @@
   {
     "class":"Authority table classification",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nSELECT distinct \"Authority table classification\" AS ?authorityTableClassification \"http://publications.europa.eu/resource/authority\" AS ?authorityTableClassification_uri ?authorityTable ?authorityTable_uri ?authorityTable_comment ?authorityTable_tableId ?authorityTable_identifier\nWHERE{{ ?authorityTable_uri a <http://www.w3.org/2002/07/owl#Ontology>;\nrdfs:label ?authorityTable;\nrdfs:comment ?authorityTable_comment;\n<http://publications.europa.eu/ontology/authority/table.id> ?authorityTable_tableId;\ndcterms:identifier ?authorityTable_identifier.\n}\nFILTER (strstarts(str(?authorityTable_uri), 'http://publications.europa.eu/resource/authority/'))\nFILTER ( ?authorityTable_uri IN (<http://publications.europa.eu/resource/authority/formjug>,<http://publications.europa.eu/resource/authority/class-sum-leg>,<http://publications.europa.eu/resource/authority/continent>) )\n}",
+    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nSELECT distinct \"Authority table classification\" AS ?authorityTableClassification \"http://publications.europa.eu/resource/authority\" AS ?authorityTableClassification_uri ?authorityTable ?authorityTable_uri ?authorityTable_comment ?authorityTable_tableId ?authorityTable_identifier\nWHERE{{ ?authorityTable_uri a <http://www.w3.org/2002/07/owl#Ontology>;\nrdfs:label ?authorityTable;\nrdfs:comment ?authorityTable_comment;\n<http://publications.europa.eu/ontology/authority/table.id> ?authorityTable_tableId;\ndcterms:identifier ?authorityTable_identifier.\n}\nFILTER (strstarts(str(?authorityTable_uri), 'http://publications.europa.eu/resource/authority/'))\nFILTER ( ?authorityTable_uri IN (<http://publications.europa.eu/resource/authority/formjug>,<http://publications.europa.eu/resource/authority/class-sum-leg>,<http://publications.europa.eu/resource/authority/continent>) )\n}",
     "hierarchy":[
       {
         "parent":"authorityTableClassification",
