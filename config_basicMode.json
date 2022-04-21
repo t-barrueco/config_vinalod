@@ -240,45 +240,35 @@
     ],
     "askquery":null
   },
-  { "class":"Eurovoc Concept",
+  { "class":"OP Theme",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nSELECT ?eurovocConcept ?eurovocConcept_uri ?eurovocConcept_definition ?aligment (?aligment AS ?aligment_uri) (?aligment AS ?aligment_link) WHERE\n{\n?eurovocConcept_uri skos:inScheme <http://eurovoc.europa.eu/100141> ;\nskos:prefLabel ?eurovocConcept.\nOPTIONAL{\n    ?eurovocConcept_uri skos:definition ?eurovocConcept_definition.\n}\n{?eurovocConcept_uri skos:exactMatch ?aligment}\nUNION\n{?eurovocConcept_uri skos:closeMatch ?aligment}\nFILTER(langMatches(lang(?eurovocConcept), \"en\")).\nFILTER(langMatches(lang(?eurovocConcept_definition), \"en\")).\nfilter(?eurovocConcept_uri=<PARAMETER>).\n}ORDER BY ?eurovocConcept ?aligment",
+    "query":"        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n        PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n        SELECT DISTINCT ?opThemeParent ?opThemeParent_uri ?opThemeChild ?opThemeChild_uri\n        where {{?opThemeChild_uri skos:broader ?opThemeParent_uri;\n                   skos:prefLabel ?opThemeChild.\n                ?opThemeParent_uri skos:prefLabel ?opThemeParent.\n                } \n               filter(?opThemeParent_uri=<PARAMETER>)\n               FILTER(langMatches(lang(?opThemeParent), \"en\")).\n               FILTER(langMatches(lang(?opThemeChild), \"en\")).\n               }ORDER BY ?opThemeParent ?opThemeChild\n    ",
     "hierarchy":[
       {
-        "parent":"eurovocConcept",
-        "child":"aligment"
+        "parent":"opThemeParent",
+        "child":"opThemeChild"
       }
     ],
     "properties":[
       {
-        "class":"eurovocConcept",
-        "property":"eurovocConcept_uri",
-        "property_name":"Eurovoc Concept URI"
+        "class":"opThemeParent",
+        "property":"opThemeParent_uri",
+        "property_name":"OP Theme Parent URI"
       },
       {
-        "class":"eurovocConcept",
-        "property":"eurovocConcept_definition",
-        "property_name":"Definition"
-      },
-      {
-        "class":"aligment",
-        "property":"aligment_uri",
-        "property_name":"Aligment URI"
-      },
-      {
-        "class":"aligment",
-        "property":"aligment_link",
-        "property_name":"Link"
+        "class":"opThemeChild",
+        "property":"opThemeChild_uri",
+        "property_name":"OP Theme Child URI"
       }
     ],
     "classes_text":[
       {
-        "class":"eurovocConcept",
-        "text":"Eurovoc Concept"
+        "class":"opThemeParent",
+        "text":"OP Theme"
       },
       {
-        "class":"aligment",
-        "text":"Aligment"
+        "class":"opThemeChild",
+        "text":"OP Theme"
       }
     ],
     "parameters":[
@@ -295,32 +285,11 @@
 
     ],
     "type":"TREE",
-    "option":"Eurovoc concept and aligments",
-    "option_text":"Eurovoc concepts and external aligments",
+    "option":"OP Themes children",
+    "option_text":"This is the long explanation for OP Themes children",
     "collection":null,
     "modelClass":null,
-    "details":[
-      {
-        "class":"aligment",
-        "details":[
-          {
-            "property":"aligment_link",
-            "text":"Link",
-            "type":"link"
-          }
-        ]
-      },
-      {
-        "class":"eurovocConcept",
-        "details":[
-          {
-            "property":"eurovocConcept_definition",
-            "text":"Definition",
-            "type":"text"
-          }
-        ]
-      }
-    ],
+    "details":null,
     "askquery":null
   },
   { "class":"Taxonomy Level",
@@ -549,6 +518,61 @@
   },
   { "class":"Country",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX cdm:<http://publications.europa.eu/ontology/cdm#>\nPREFIX dcterms:<http://purl.org/dc/terms/>\nSELECT distinct ?country ?country_uri ?caseLawConcept ?caseLawConcept_uri (?country_uri AS ?caseLawConcept_country)\nWHERE{{ \n    ?caseLaw_uri cdm:case-law_originates_in_country ?country_uri;\n    cdm:case-law_is_about_concept_case-law ?caseLawConceptTemp_uri.\n    ?caseLawConcept_uri skos:narrower* ?caseLawConceptTemp_uri. \n    ?caseLawConcept_uri skos:prefLabel ?caseLawConcept.\n    ?country_uri skos:prefLabel ?country.\n}\nFILTER(langMatches(lang(?country), \"en\"))\nFILTER(langMatches(lang(?caseLawConcept), \"en\"))\nFILTER(?country_uri=<PARAMETER>).\nFILTER EXISTS{?caseLawConcept_uri <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://publications.europa.eu/resource/authority/fd_577>}.\n}ORDER BY ?country ?caseLawConcept",
+    "hierarchy":[
+      {
+        "parent":"country",
+        "child":"caseLawConcept"
+      }
+    ],
+    "properties":[
+      {
+        "class":"country",
+        "property":"country_uri",
+        "property_name":"URI"
+      },
+      {
+        "class":"caseLawConcept",
+        "property":"caseLawConcept_uri",
+        "property_name":"URI"
+      },
+      {
+        "class":"caseLawConcept",
+        "property":"caseLawConcept_country",
+        "property_name":"Country"
+      }
+    ],
+    "classes_text":[
+      {
+        "class":"country",
+        "text":"Country"
+      },
+      {
+        "class":"caseLawConcept",
+        "text":"Case-law concept"
+      }
+    ],
+    "parameters":[
+      {
+        "property":"country_uri"
+      }
+    ],
+    "filters":null,
+    "tooltip":[
+
+    ],
+    "function":null,
+    "columns":null,
+    "type":"TREE",
+    "option":"Case-law by Case-law concepts",
+    "option_text":"Case-law by Case-law concepts",
+    "collection":null,
+    "modelClass":"http://publications.europa.eu/ontology/euvoc#Country",
+    "details":null,
+    "askquery":null
+  },
+  { "class":"Country",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
     "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX geo: <http://www.opengis.net/ont/geosparql#>\nPREFIX authority: <http://publications.europa.eu/ontology/authority/>\nSELECT DISTINCT ?country ?country_uri ?language ?language_uri\nwhere {{?continentName_uri skos:prefLabel ?continentName;\nskos:inScheme ?continent_uri.\n?continent_uri skos:prefLabel ?continent.\n?country_uri geo:sfWithin ?continentName_uri;\nskos:prefLabel ?country;\nauthority:deprecated ?deprecated;\ndcterms:language ?language_uri.\n?language_uri skos:prefLabel ?language\n}\nfilter(?country_uri=<PARAMETER>).\nFILTER(langMatches(lang(?country), \"en\"))\nfilter(?deprecated=\"false\").\nFILTER(langMatches(lang(?language), \"en\"))\n}ORDER BY?country ?language",
     "hierarchy":[
       {
@@ -711,7 +735,7 @@
     "details":null,
     "askquery":null
   },
-  { "class": "eurun",
+  { "class":  "eurun",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
     "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n   PREFIX org: <http://www.w3.org/ns/org#>\n    PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\n    PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>\n    PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n            SELECT DISTINCT ?eurun ?eurun_uri ?eurun_image ?corporateBody ?corporateBody_uri ?corporateBody_image ?corporateBody_country ?corporateBody_countryUri ?corporateBody_location ?corporateBody_locationUri   \n            where {{?eurun_uri org:hasSubOrganization ?corporateBody_uri;\n                           skos:prefLabel ?eurun;\n                           foaf:depiction ?eurun_image.\n                    ?corporateBody_uri skos:prefLabel ?corporateBody;\n                       foaf:depiction ?corporateBody_image;\n                       geo:location ?corporateBody_locationUri.\n                    ?corporateBody_locationUri skos:prefLabel ?corporateBody_location;\n                              geosparql:sfWithin ?corporateBody_countryUri.\n                    ?corporateBody_countryUri skos:prefLabel ?corporateBody_country          \n                    } \n                   filter(?eurun_uri=<http://publications.europa.eu/resource/authority/corporate-body/EURUN>).\n                   FILTER(langMatches(lang(?eurun), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody_location), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody_country), \"en\")).\n                   }ORDER BY ?eurun ?corporateBody\n                   #LIMIT 50\n    ",
     "hierarchy":[
@@ -802,7 +826,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220421-2218)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220421-2228)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1119,58 +1143,6 @@
     "type":"WIKIPEDIA",
     "option":"WHOISWHO Wikipedia page",
     "option_text":"WHOISWHO Wikipedia page",
-    "collection":null,
-    "modelClass":null,
-    "details":null,
-    "askquery":null
-  },
-  { "class":"OP Theme",
-    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n        PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n        SELECT DISTINCT ?opThemeParent ?opThemeParent_uri ?opThemeChild ?opThemeChild_uri\n        where {{?opThemeChild_uri skos:broader ?opThemeParent_uri;\n                   skos:prefLabel ?opThemeChild.\n                ?opThemeParent_uri skos:prefLabel ?opThemeParent.\n                } \n               filter(?opThemeParent_uri=<PARAMETER>)\n               FILTER(langMatches(lang(?opThemeParent), \"en\")).\n               FILTER(langMatches(lang(?opThemeChild), \"en\")).\n               }ORDER BY ?opThemeParent ?opThemeChild\n    ",
-    "hierarchy":[
-      {
-        "parent":"opThemeParent",
-        "child":"opThemeChild"
-      }
-    ],
-    "properties":[
-      {
-        "class":"opThemeParent",
-        "property":"opThemeParent_uri",
-        "property_name":"OP Theme Parent URI"
-      },
-      {
-        "class":"opThemeChild",
-        "property":"opThemeChild_uri",
-        "property_name":"OP Theme Child URI"
-      }
-    ],
-    "classes_text":[
-      {
-        "class":"opThemeParent",
-        "text":"OP Theme"
-      },
-      {
-        "class":"opThemeChild",
-        "text":"OP Theme"
-      }
-    ],
-    "parameters":[
-
-    ],
-    "filters":[
-
-    ],
-    "tooltip":[
-
-    ],
-    "function":"",
-    "columns":[
-
-    ],
-    "type":"TREE",
-    "option":"OP Themes children",
-    "option_text":"This is the long explanation for OP Themes children",
     "collection":null,
     "modelClass":null,
     "details":null,
@@ -1596,44 +1568,6 @@
     "details":null,
     "askquery":null
   },
-  { "class":"Eurovoc Top Concept",
-    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?text\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept ?eurovocTop_uri.\n                    ?eurovocTop_uri euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri;\n                    cdm:expression_title ?text.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocTop_uri skos:prefLabel ?eurovocTop.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER>).\n                   filter(?eurovocTop_uri=<PARAMETER3>).\n                   FILTER(langMatches(lang(?eurovocTop), \"en\")).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
-    "hierarchy":[
-
-    ],
-    "properties":[
-
-    ],
-    "classes_text":[
-
-    ],
-    "parameters":[
-      {
-        "property":"eurovocDomain_directoryOrg"
-      },
-      {
-        "property":"eurovocTop_eurovocDomain"
-      }
-    ],
-    "filters":[
-
-    ],
-    "tooltip":[
-
-    ],
-    "function":"",
-    "columns":[
-
-    ],
-    "type":"WORDCLOUD",
-    "option":"Wordcloud by Eurovoc Top Concepts for parlamentary questions",
-    "option_text":"Wordcloud by Eurovoc Top Concepts for parlamentary questions",
-    "collection":null,
-    "modelClass":null,
-    "details":null,
-    "askquery":null
-  },
   { "class":"Eurovoc Domain",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
     "query":"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?eurovocTop ?eurovocTop_uri (?directoryOrg_uri AS ?eurovocTop_directoryOrg) (?eurovocDomain_uri AS ?eurovocTop_eurovocDomain) ?eurovocDomain ?eurovocDomain_uri\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept ?eurovocTop_uri.\n                    ?eurovocTop_uri euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocTop_uri skos:prefLabel ?eurovocTop.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocTop), \"en\")).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
@@ -1700,6 +1634,44 @@
   },
   { "class":"Eurovoc Top Concept",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?text\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept ?eurovocTop_uri.\n                    ?eurovocTop_uri euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri;\n                    cdm:expression_title ?text.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocTop_uri skos:prefLabel ?eurovocTop.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER>).\n                   filter(?eurovocTop_uri=<PARAMETER3>).\n                   FILTER(langMatches(lang(?eurovocTop), \"en\")).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
+    "hierarchy":[
+
+    ],
+    "properties":[
+
+    ],
+    "classes_text":[
+
+    ],
+    "parameters":[
+      {
+        "property":"eurovocDomain_directoryOrg"
+      },
+      {
+        "property":"eurovocTop_eurovocDomain"
+      }
+    ],
+    "filters":[
+
+    ],
+    "tooltip":[
+
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"WORDCLOUD",
+    "option":"Wordcloud by Eurovoc Top Concepts for parlamentary questions",
+    "option_text":"Wordcloud by Eurovoc Top Concepts for parlamentary questions",
+    "collection":null,
+    "modelClass":null,
+    "details":null,
+    "askquery":null
+  },
+  { "class":"Eurovoc Top Concept",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
     "query":"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n    PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n    PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n    PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>  \n    PREFIX dcterms: <http://purl.org/dc/terms/>  \n    \n            SELECT DISTINCT ?text\n            where {{?parlamentaryQuestion_uri cdm:question_parliamentary_asked_by_group_parliamentary ?directoryOrg_uri;\n                            cdm:work_is_about_concept_eurovoc/^skos:hasTopConcept ?eurovocTop_uri.\n                    ?eurovocTop_uri euvoc:domain ?eurovocDomain_uri.\n                    ?expression cdm:expression_belongs_to_work ?parlamentaryQuestion_uri;\n                    cdm:expression_uses_language ?expression_languageUri;\n                    cdm:expression_title ?text.\n                    ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n                    ?eurovocTop_uri skos:prefLabel ?eurovocTop.\n                    ?eurovocDomain_uri skos:prefLabel ?eurovocDomain.\n                    } \n                   filter(?directoryOrg_uri=<PARAMETER2>).\n                   filter(?eurovocDomain_uri=<PARAMETER3>).\n                   filter(?eurovocTop_uri=<PARAMETER>).\n                   FILTER(langMatches(lang(?eurovocTop), \"en\")).\n                   FILTER(langMatches(lang(?eurovocDomain), \"en\")).\n                   FILTER(langMatches(lang(?directoryOrg), \"en\")).\n                   FILTER(str(?expression_languageUri)='http://publications.europa.eu/resource/authority/language/ENG').\n                   }\n    ",
     "hierarchy":[
 
@@ -1735,6 +1707,187 @@
     "modelClass":null,
     "details":null,
     "askquery":null
+  },
+  { "class":"Eurovoc Concept",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nSELECT ?eurovocConcept ?eurovocConcept_uri ?eurovocConcept_definition ?aligment (?aligment AS ?aligment_uri) (?aligment AS ?aligment_link) WHERE\n{\n?eurovocConcept_uri skos:inScheme <http://eurovoc.europa.eu/100141> ;\nskos:prefLabel ?eurovocConcept.\nOPTIONAL{\n    ?eurovocConcept_uri skos:definition ?eurovocConcept_definition.\n}\n{?eurovocConcept_uri skos:exactMatch ?aligment}\nUNION\n{?eurovocConcept_uri skos:closeMatch ?aligment}\nFILTER(langMatches(lang(?eurovocConcept), \"en\")).\nFILTER(langMatches(lang(?eurovocConcept_definition), \"en\")).\nfilter(?eurovocConcept_uri=<PARAMETER>).\n}ORDER BY ?eurovocConcept ?aligment",
+    "hierarchy":[
+      {
+        "parent":"eurovocConcept",
+        "child":"aligment"
+      }
+    ],
+    "properties":[
+      {
+        "class":"eurovocConcept",
+        "property":"eurovocConcept_uri",
+        "property_name":"Eurovoc Concept URI"
+      },
+      {
+        "class":"eurovocConcept",
+        "property":"eurovocConcept_definition",
+        "property_name":"Definition"
+      },
+      {
+        "class":"aligment",
+        "property":"aligment_uri",
+        "property_name":"Aligment URI"
+      },
+      {
+        "class":"aligment",
+        "property":"aligment_link",
+        "property_name":"Link"
+      }
+    ],
+    "classes_text":[
+      {
+        "class":"eurovocConcept",
+        "text":"Eurovoc Concept"
+      },
+      {
+        "class":"aligment",
+        "text":"Aligment"
+      }
+    ],
+    "parameters":[
+
+    ],
+    "filters":[
+
+    ],
+    "tooltip":[
+
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"TREE",
+    "option":"Eurovoc concept and aligments",
+    "option_text":"Eurovoc concepts and external aligments",
+    "collection":null,
+    "modelClass":null,
+    "details":[
+      {
+        "class":"aligment",
+        "details":[
+          {
+            "property":"aligment_link",
+            "text":"Link",
+            "type":"link"
+          }
+        ]
+      },
+      {
+        "class":"eurovocConcept",
+        "details":[
+          {
+            "property":"eurovocConcept_definition",
+            "text":"Definition",
+            "type":"text"
+          }
+        ]
+      }
+    ],
+    "askquery":null
+  },
+  { "class":"Eurovoc Concept",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\nPREFIX ontology:<'http://publications.europa.eu/ontology/euvoc#>\nselect ?eurovocConcept ?eurovocConcept_uri ?corporateBody ?corporateBody_uri ?publicationDocument ?publicationDocument_uri ?publicationDocument_abstract ?publicationDocument_language ?publicationDocument_date ?publicationDocument_id\nwhere{{\n?publicationDocument_documentUri <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovocConcept_uri.\n?eurovocConcept_uri skos:prefLabel ?eurovocConcept.\n?publicationDocument_documentUri cdm:work_date_document ?publicationDocument_date;\ncdm:work_authored_by_agent ?corporateBody_uri;\ncdm:work_id_document ?publicationDocument_id.\n?corporateBody_uri a <http://publications.europa.eu/ontology/euvoc#Corporate>;\nskos:prefLabel ?corporateBody.\n?publicationDocument_uri cdm:expression_belongs_to_work ?publicationDocument_documentUri;\ncdm:expression_uses_language ?expression_languageUri;\ncdm:expression_title ?publicationDocument.\n?expression_languageUri skos:prefLabel ?publicationDocument_language.\nOPTIONAL{\n    ?publicationDocument_uri cdm:expression_abstract ?publicationDocument_abstract.\n}\n}\nFILTER(?expression_languageUri=<http://publications.europa.eu/resource/authority/language/ENG>).\nFILTER(langMatches(lang(?eurovocConcept), \"en\")).\nFILTER(langMatches(lang(?corporateBody), \"en\")).\nFILTER(langMatches(lang(?publicationDocument_language), \"en\")).\nfilter(?eurovocConcept_uri=<PARAMETER>).}ORDER BY ?eurovocConcept ?corporateBody DESC(?publicationDocument_date)",
+    "hierarchy":[
+      {
+        "parent":"eurovocConcept",
+        "child":"corporateBody"
+      },
+      {
+        "parent":"corporateBody",
+        "child":"publicationDocument"
+      }
+    ],
+    "properties":[
+      {
+        "class":"eurovocConcept",
+        "property":"eurovocConcept_uri",
+        "property_name":"URI"
+      },
+      {
+        "class":"corporateBody",
+        "property":"corporateBody_uri",
+        "property_name":"URI"
+      },
+      {
+        "class":"publicationDocument",
+        "property":"publicationDocument_uri",
+        "property_name":"URI"
+      },
+      {
+        "class":"publicationDocument",
+        "property":"publicationDocument_date",
+        "property_name":"Date"
+      },
+      {
+        "class":"publicationDocument",
+        "property":"publicationDocument_id",
+        "property_name":"Id"
+      },
+      {
+        "class":"publicationDocument",
+        "property":"publicationDocument_language",
+        "property_name":"Language"
+      },
+      {
+        "class":"publicationDocument",
+        "property":"publicationDocument_abstract",
+        "property_name":"Abstract"
+      }
+    ],
+    "classes_text":[
+      {
+        "class":"eurovocConcept",
+        "text":"Eurovoc Concept"
+      },
+      {
+        "class":"corporateBody",
+        "text":"corporateBody"
+      },
+      {
+        "class":"publicationDocument",
+        "text":"Publication Document"
+      }
+    ],
+    "parameters":null,
+    "filters":null,
+    "tooltip":null,
+    "function":null,
+    "columns":null,
+    "type":"TREE",
+    "option":"Publications by Corporate body",
+    "option_text":"Publications by Corporate body classified by this Eurovoc concept",
+    "collection":null,
+    "modelClass":"http://publications.europa.eu/ontology/cdm#concept_eurovoc",
+    "details":[
+      {
+        "class":"publicationDocument",
+        "details":[
+          {
+            "property":"publicationDocument_date",
+            "text":"Publication date",
+            "type":"text"
+          },
+          {
+            "property":"publicationDocument_abstract",
+            "text":"Abstract",
+            "type":"text"
+          },
+          {
+            "property":"publicationDocument_id",
+            "text":"Publication ID",
+            "type":"text"
+          }
+        ]
+      }
+    ],
+    "askquery":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\nPREFIX ontology:<'http://publications.europa.eu/ontology/euvoc#>\nASK\nwhere{{\n?publicationDocument_documentUri <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovocConcept_uri.\n?eurovocConcept_uri skos:prefLabel ?eurovocConcept.\n?publicationDocument_documentUri cdm:work_date_document ?publicationDocument_date;\ncdm:work_authored_by_agent ?corporateBody_uri;\ncdm:work_id_document ?publicationDocument_id.\n?corporateBody_uri a <http://publications.europa.eu/ontology/euvoc#Corporate>;\nskos:prefLabel ?corporateBody.\n?publicationDocument_uri cdm:expression_belongs_to_work ?publicationDocument_documentUri;\ncdm:expression_uses_language ?expression_languageUri;\ncdm:expression_title ?publicationDocument.\n?expression_languageUri skos:prefLabel ?publicationDocument_language.\nOPTIONAL{\n    ?publicationDocument_uri cdm:expression_abstract ?publicationDocument_abstract.\n}\n}\nFILTER(?expression_languageUri=<http://publications.europa.eu/resource/authority/language/ENG>).\nFILTER(langMatches(lang(?eurovocConcept), \"en\")).\nFILTER(langMatches(lang(?corporateBody), \"en\")).\nFILTER(langMatches(lang(?publicationDocument_language), \"en\")).\nfilter(?eurovocConcept_uri=<PARAMETER>).}"
   },
   { "class":"dataeuropa",
     "endpoint_url":"https://data.europa.eu/sparql",
@@ -1835,6 +1988,185 @@
     "collection":null,
     "modelClass":null,
     "details":null,
+    "askquery":null
+  },
+  { "class":"Catalog of open datasets",
+    "endpoint_url":"https://data.europa.eu/sparql",
+    "query":"PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nSELECT DISTINCT ?DEUCatalog_Modified ?DEUCatalog_Language ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog ?datatheme ?datatheme_uri ?datatheme_definition ?dataset ?dataset_uri (?dataset_uri AS ?dataset_link) ?dataset_description ?dataset_accessRights ?documentation ?documentation_description ?documentation_uri (?documentation_uri AS ?documentation_link)\n  WHERE{{ \n        ?DEUCatalog_uri dcat:dataset ?dataset_uri; \n        dcterms:title ?title.\n        ?dataset_uri dcterms:description ?dataset_description;\n        dcterms:title ?dataset.\n        #dcterms:accessRights ?dataset_accessRightsURI.\n        #?dataset_accessRightsURI skos:prefLabel ?dataset_accessRights.\n        #?dataset_uri dcat:theme ?datatheme_uri.\n        #?dataset_uri dcat:distribution ?distribution_uri.\n        #?datatheme_uri skos:prefLabel ?datatheme.\n        #skos:definition ?datatheme_definition.\n        OPTIONAL{\n           ?dataset_uri dcat:theme ?datatheme_uri.\n           ?datatheme_uri skos:prefLabel ?datatheme.\n           #skos:definition ?datatheme_definition.\n           FILTER(langMatches(lang(?datatheme), \"en\")).\n           #FILTER(langMatches(lang(?datatheme_definition), \"en\")).\n        }\n        OPTIONAL{\n           ?dataset_uri dcterms:accessRights ?dataset_accessRightsURI.\n           ?dataset_accessRightsURI skos:prefLabel ?dataset_accessRights.\n        }\n        OPTIONAL{\n           ?dataset_uri foaf:page ?documentation_uri.\n           ?documentation_uri dcterms:title ?documentation;\n                        dcterms:description ?documentation_description.\n        }\n        OPTIONAL\n          { ?DEUCatalog_uri dcterms:description ?description\n          } ?DEUCatalog_uri dcterms:modified ?DEUCatalog_Modified.\n        ?DEUCatalog_uri dcterms:language ?DEUCatalog_Language.  \n       }\n        filter(?DEUCatalog_uri=<PARAMETER>).\n        FILTER(langMatches(lang(?dataset), \"en\")).\n        FILTER(langMatches(lang(?dataset_description), \"en\")).\n        }",
+    "hierarchy":[
+      {
+        "parent":"DEUCatalog",
+        "child":"datatheme"
+      },
+      {
+        "parent":"datatheme",
+        "child":"dataset"
+      },
+      {
+        "parent":"dataset",
+        "child":"documentation"
+      }
+    ],
+    "properties":[
+      {
+        "class":"DEUCatalog",
+        "property":"DEUCatalog_uri",
+        "property_name":"Catalog URI"
+      },
+      {
+        "class":"DEUCatalog",
+        "property":"DEUCatalog_Modified",
+        "property_name":"Catalog modified"
+      },
+      {
+        "class":"DEUCatalog",
+        "property":"DEUCatalog_Language",
+        "property_name":"Catalog language"
+      },
+      {
+        "class":"datatheme",
+        "property":"datatheme_definition",
+        "property_name":"Data theme definition"
+      },
+      {
+        "class":"datatheme",
+        "property":"datatheme_uri",
+        "property_name":"Data theme URI"
+      },
+      {
+        "class":"dataset",
+        "property":"dataset_description",
+        "property_name":"Dataset description"
+      },
+      {
+        "class":"dataset",
+        "property":"dataset_uri",
+        "property_name":"Dataset URI"
+      },
+      {
+        "class":"dataset",
+        "property":"dataset_link",
+        "property_name":"Dataset link"
+      },
+      {
+        "class":"dataset",
+        "property":"dataset_accessRights",
+        "property_name":"Dataset access rights"
+      },
+      {
+        "class":"documentation",
+        "property":"documentation_description",
+        "property_name":"Documentation description"
+      },
+      {
+        "class":"documentation",
+        "property":"documentation_uri",
+        "property_name":"Documentation URI"
+      },
+      {
+        "class":"documentation",
+        "property":"documentation_link",
+        "property_name":"Documentation link"
+      }
+    ],
+    "classes_text":[
+      {
+        "class":"DEUCatalog",
+        "text":"Catalog of open datasets"
+      },
+      {
+        "class":"datatheme",
+        "text":"Data theme"
+      },
+      {
+        "class":"dataset",
+        "text":"Dataset"
+      },
+      {
+        "class":"documentation",
+        "text":"Dataset documentation"
+      }
+    ],
+    "parameters":[
+
+    ],
+    "filters":[
+
+    ],
+    "tooltip":[
+
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"TREE",
+    "option":"Data themes and datasets per catalog",
+    "option_text":"Adds data themes and datasets included in catalog",
+    "collection":null,
+    "modelClass":null,
+    "details":[
+      {
+        "class":"DEUCatalog",
+        "details":[
+          {
+            "property":"DEUCatalog_Modified",
+            "text":"Modified",
+            "type":"text"
+          },
+          {
+            "property":"DEUCatalog_Language",
+            "text":"Language",
+            "type":"text"
+          }
+        ]
+      },
+      {
+        "class":"datatheme",
+        "details":[
+          {
+            "property":"datatheme_definition",
+            "text":"Definition",
+            "type":"text"
+          }
+        ]
+      },
+      {
+        "class":"dataset",
+        "details":[
+          {
+            "property":"dataset_description",
+            "text":"Description",
+            "type":"text"
+          },
+          {
+            "property":"dataset_accessRights",
+            "text":"Access rights",
+            "type":"text"
+          },
+          {
+            "property":"dataset_link",
+            "text":"Website link",
+            "type":"link"
+          }
+        ]
+      },
+      {
+        "class":"documentation",
+        "details":[
+          {
+            "property":"documentation_description",
+            "text":"Description",
+            "type":"text"
+          },
+          {
+            "property":"documentation_link",
+            "text":"Documentation link",
+            "type":"link"
+          }
+        ]
+      }
+    ],
     "askquery":null
   },
   { "class":"Catalog of open datasets",
@@ -2245,185 +2577,6 @@
             "property":"corporateBody_email",
             "text":"Email",
             "type":"text"
-          }
-        ]
-      }
-    ],
-    "askquery":null
-  },
-  { "class":"Catalog of open datasets",
-    "endpoint_url":"https://data.europa.eu/sparql",
-    "query":"PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nSELECT DISTINCT ?DEUCatalog_Modified ?DEUCatalog_Language ?DEUCatalog_uri concat(?title, ' - ', ?description) as ?DEUCatalog ?datatheme ?datatheme_uri ?datatheme_definition ?dataset ?dataset_uri (?dataset_uri AS ?dataset_link) ?dataset_description ?dataset_accessRights ?documentation ?documentation_description ?documentation_uri (?documentation_uri AS ?documentation_link)\n  WHERE{{ \n        ?DEUCatalog_uri dcat:dataset ?dataset_uri; \n        dcterms:title ?title.\n        ?dataset_uri dcterms:description ?dataset_description;\n        dcterms:title ?dataset.\n        #dcterms:accessRights ?dataset_accessRightsURI.\n        #?dataset_accessRightsURI skos:prefLabel ?dataset_accessRights.\n        #?dataset_uri dcat:theme ?datatheme_uri.\n        #?dataset_uri dcat:distribution ?distribution_uri.\n        #?datatheme_uri skos:prefLabel ?datatheme.\n        #skos:definition ?datatheme_definition.\n        OPTIONAL{\n           ?dataset_uri dcat:theme ?datatheme_uri.\n           ?datatheme_uri skos:prefLabel ?datatheme.\n           #skos:definition ?datatheme_definition.\n           FILTER(langMatches(lang(?datatheme), \"en\")).\n           #FILTER(langMatches(lang(?datatheme_definition), \"en\")).\n        }\n        OPTIONAL{\n           ?dataset_uri dcterms:accessRights ?dataset_accessRightsURI.\n           ?dataset_accessRightsURI skos:prefLabel ?dataset_accessRights.\n        }\n        OPTIONAL{\n           ?dataset_uri foaf:page ?documentation_uri.\n           ?documentation_uri dcterms:title ?documentation;\n                        dcterms:description ?documentation_description.\n        }\n        OPTIONAL\n          { ?DEUCatalog_uri dcterms:description ?description\n          } ?DEUCatalog_uri dcterms:modified ?DEUCatalog_Modified.\n        ?DEUCatalog_uri dcterms:language ?DEUCatalog_Language.  \n       }\n        filter(?DEUCatalog_uri=<PARAMETER>).\n        FILTER(langMatches(lang(?dataset), \"en\")).\n        FILTER(langMatches(lang(?dataset_description), \"en\")).\n        }",
-    "hierarchy":[
-      {
-        "parent":"DEUCatalog",
-        "child":"datatheme"
-      },
-      {
-        "parent":"datatheme",
-        "child":"dataset"
-      },
-      {
-        "parent":"dataset",
-        "child":"documentation"
-      }
-    ],
-    "properties":[
-      {
-        "class":"DEUCatalog",
-        "property":"DEUCatalog_uri",
-        "property_name":"Catalog URI"
-      },
-      {
-        "class":"DEUCatalog",
-        "property":"DEUCatalog_Modified",
-        "property_name":"Catalog modified"
-      },
-      {
-        "class":"DEUCatalog",
-        "property":"DEUCatalog_Language",
-        "property_name":"Catalog language"
-      },
-      {
-        "class":"datatheme",
-        "property":"datatheme_definition",
-        "property_name":"Data theme definition"
-      },
-      {
-        "class":"datatheme",
-        "property":"datatheme_uri",
-        "property_name":"Data theme URI"
-      },
-      {
-        "class":"dataset",
-        "property":"dataset_description",
-        "property_name":"Dataset description"
-      },
-      {
-        "class":"dataset",
-        "property":"dataset_uri",
-        "property_name":"Dataset URI"
-      },
-      {
-        "class":"dataset",
-        "property":"dataset_link",
-        "property_name":"Dataset link"
-      },
-      {
-        "class":"dataset",
-        "property":"dataset_accessRights",
-        "property_name":"Dataset access rights"
-      },
-      {
-        "class":"documentation",
-        "property":"documentation_description",
-        "property_name":"Documentation description"
-      },
-      {
-        "class":"documentation",
-        "property":"documentation_uri",
-        "property_name":"Documentation URI"
-      },
-      {
-        "class":"documentation",
-        "property":"documentation_link",
-        "property_name":"Documentation link"
-      }
-    ],
-    "classes_text":[
-      {
-        "class":"DEUCatalog",
-        "text":"Catalog of open datasets"
-      },
-      {
-        "class":"datatheme",
-        "text":"Data theme"
-      },
-      {
-        "class":"dataset",
-        "text":"Dataset"
-      },
-      {
-        "class":"documentation",
-        "text":"Dataset documentation"
-      }
-    ],
-    "parameters":[
-
-    ],
-    "filters":[
-
-    ],
-    "tooltip":[
-
-    ],
-    "function":"",
-    "columns":[
-
-    ],
-    "type":"TREE",
-    "option":"Data themes and datasets per catalog",
-    "option_text":"Adds data themes and datasets included in catalog",
-    "collection":null,
-    "modelClass":null,
-    "details":[
-      {
-        "class":"DEUCatalog",
-        "details":[
-          {
-            "property":"DEUCatalog_Modified",
-            "text":"Modified",
-            "type":"text"
-          },
-          {
-            "property":"DEUCatalog_Language",
-            "text":"Language",
-            "type":"text"
-          }
-        ]
-      },
-      {
-        "class":"datatheme",
-        "details":[
-          {
-            "property":"datatheme_definition",
-            "text":"Definition",
-            "type":"text"
-          }
-        ]
-      },
-      {
-        "class":"dataset",
-        "details":[
-          {
-            "property":"dataset_description",
-            "text":"Description",
-            "type":"text"
-          },
-          {
-            "property":"dataset_accessRights",
-            "text":"Access rights",
-            "type":"text"
-          },
-          {
-            "property":"dataset_link",
-            "text":"Website link",
-            "type":"link"
-          }
-        ]
-      },
-      {
-        "class":"documentation",
-        "details":[
-          {
-            "property":"documentation_description",
-            "text":"Description",
-            "type":"text"
-          },
-          {
-            "property":"documentation_link",
-            "text":"Documentation link",
-            "type":"link"
           }
         ]
       }
@@ -3559,61 +3712,6 @@
     "details":null,
     "askquery":null
   },
-  { "class":"Country",
-    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX cdm:<http://publications.europa.eu/ontology/cdm#>\nPREFIX dcterms:<http://purl.org/dc/terms/>\nSELECT distinct ?country ?country_uri ?caseLawConcept ?caseLawConcept_uri (?country_uri AS ?caseLawConcept_country)\nWHERE{{ \n    ?caseLaw_uri cdm:case-law_originates_in_country ?country_uri;\n    cdm:case-law_is_about_concept_case-law ?caseLawConceptTemp_uri.\n    ?caseLawConcept_uri skos:narrower* ?caseLawConceptTemp_uri. \n    ?caseLawConcept_uri skos:prefLabel ?caseLawConcept.\n    ?country_uri skos:prefLabel ?country.\n}\nFILTER(langMatches(lang(?country), \"en\"))\nFILTER(langMatches(lang(?caseLawConcept), \"en\"))\nFILTER(?country_uri=<PARAMETER>).\nFILTER EXISTS{?caseLawConcept_uri <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://publications.europa.eu/resource/authority/fd_577>}.\n}ORDER BY ?country ?caseLawConcept",
-    "hierarchy":[
-      {
-        "parent":"country",
-        "child":"caseLawConcept"
-      }
-    ],
-    "properties":[
-      {
-        "class":"country",
-        "property":"country_uri",
-        "property_name":"URI"
-      },
-      {
-        "class":"caseLawConcept",
-        "property":"caseLawConcept_uri",
-        "property_name":"URI"
-      },
-      {
-        "class":"caseLawConcept",
-        "property":"caseLawConcept_country",
-        "property_name":"Country"
-      }
-    ],
-    "classes_text":[
-      {
-        "class":"country",
-        "text":"Country"
-      },
-      {
-        "class":"caseLawConcept",
-        "text":"Case-law concept"
-      }
-    ],
-    "parameters":[
-      {
-        "property":"country_uri"
-      }
-    ],
-    "filters":null,
-    "tooltip":[
-
-    ],
-    "function":null,
-    "columns":null,
-    "type":"TREE",
-    "option":"Case-law by Case-law concepts",
-    "option_text":"Case-law by Case-law concepts",
-    "collection":null,
-    "modelClass":"http://publications.europa.eu/ontology/euvoc#Country",
-    "details":null,
-    "askquery":null
-  },
   { "class":"Case-law concept",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
     "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX cdm:<http://publications.europa.eu/ontology/cdm#>\nPREFIX dcterms:<http://purl.org/dc/terms/>\nSELECT distinct ?caseLawConceptParent ?caseLawConceptParent_uri ?caseLawConcept ?caseLawConcept_uri ?caseLawConcept_country\nWHERE{{ \n    ?caseLaw_uri cdm:case-law_originates_in_country ?caseLawConcept_country;\n    cdm:case-law_is_about_concept_case-law ?caseLawConceptTemp_uri.\n    ?caseLawConcept_uri skos:narrower* ?caseLawConceptTemp_uri. \n    ?caseLawConcept_uri skos:prefLabel ?caseLawConcept.\n    ?caseLawConceptParent_uri skos:prefLabel ?caseLawConceptParent.\n}\nFILTER(langMatches(lang(?caseLawConcept), \"en\"))\nFILTER(langMatches(lang(?caseLawConceptParent), \"en\"))\nFILTER(?caseLawConcept_country=<PARAMETER2>).\nFILTER(?caseLawConceptParent_uri=<PARAMETER>).\nFILTER EXISTS{?caseLawConceptParent_uri skos:narrower ?caseLawConcept_uri}.\n}ORDER BY ?caseLawConceptParent ?caseLawConcept",
@@ -3762,103 +3860,6 @@
       }
     ],
     "askquery":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX cdm:<http://publications.europa.eu/ontology/cdm#>\nPREFIX dcterms:<http://purl.org/dc/terms/>\nASK\nWHERE{{ ?caseLaw_uri cdm:case-law_originates_in_country ?caseLawConcept_country.\n?expressionTemp_uri cdm:expression_belongs_to_work ?caseLaw_uri;\ncdm:expression_uses_language ?expressionTemp_lang;\n    cdm:expression_title ?caseLaw_title.\n?caseLaw_link cdm:manifestation_manifests_expression ?expressionTemp_uri;\ncdm:manifestation_type ?manifestation_type.\n?caseLaw_uri cdm:case-law_is_about_concept_case-law ?caseLawConcept_uri.\n    ?caseLawConcept_uri skos:prefLabel ?caseLawConcept.\nOPTIONAL\n    {\n    ?caseLaw_uri cdm:case-law_ecli ?caseLaw_ecli.\n    }\n{\n    SELECT ?language_main WHERE {{?caseLawConcept_country dcterms:language ?language_main} FILTER(?caseLawConcept_country=<PARAMETER2>).} LIMIT 1\n}\nBIND((IF (NOT EXISTS {SELECT ?expressionTemp2_uri WHERE {?expressionTemp2_uri cdm:expression_belongs_to_work ?caseLaw_uri; cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/ENG>}},?language_main, <http://publications.europa.eu/resource/authority/language/ENG>)) AS ?expressionTemp_language)\n}\nFILTER(?expressionTemp_lang=?expressionTemp_language).\nFILTER(langMatches(lang(?caseLawConcept), \"en\"))\nFILTER(str(?manifestation_type)='html')\nFILTER(?caseLawConcept_country=<PARAMETER2>).\nFILTER(?caseLawConcept_uri=<PARAMETER>).\n}"
-  },
-  { "class":"Eurovoc Concept",
-    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\nPREFIX ontology:<'http://publications.europa.eu/ontology/euvoc#>\nselect ?eurovocConcept ?eurovocConcept_uri ?corporateBody ?corporateBody_uri ?publicationDocument ?publicationDocument_uri ?publicationDocument_abstract ?publicationDocument_language ?publicationDocument_date ?publicationDocument_id\nwhere{{\n?publicationDocument_documentUri <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovocConcept_uri.\n?eurovocConcept_uri skos:prefLabel ?eurovocConcept.\n?publicationDocument_documentUri cdm:work_date_document ?publicationDocument_date;\ncdm:work_authored_by_agent ?corporateBody_uri;\ncdm:work_id_document ?publicationDocument_id.\n?corporateBody_uri a <http://publications.europa.eu/ontology/euvoc#Corporate>;\nskos:prefLabel ?corporateBody.\n?publicationDocument_uri cdm:expression_belongs_to_work ?publicationDocument_documentUri;\ncdm:expression_uses_language ?expression_languageUri;\ncdm:expression_title ?publicationDocument.\n?expression_languageUri skos:prefLabel ?publicationDocument_language.\nOPTIONAL{\n    ?publicationDocument_uri cdm:expression_abstract ?publicationDocument_abstract.\n}\n}\nFILTER(?expression_languageUri=<http://publications.europa.eu/resource/authority/language/ENG>).\nFILTER(langMatches(lang(?eurovocConcept), \"en\")).\nFILTER(langMatches(lang(?corporateBody), \"en\")).\nFILTER(langMatches(lang(?publicationDocument_language), \"en\")).\nfilter(?eurovocConcept_uri=<PARAMETER>).}ORDER BY ?eurovocConcept ?corporateBody DESC(?publicationDocument_date)",
-    "hierarchy":[
-      {
-        "parent":"eurovocConcept",
-        "child":"corporateBody"
-      },
-      {
-        "parent":"corporateBody",
-        "child":"publicationDocument"
-      }
-    ],
-    "properties":[
-      {
-        "class":"eurovocConcept",
-        "property":"eurovocConcept_uri",
-        "property_name":"URI"
-      },
-      {
-        "class":"corporateBody",
-        "property":"corporateBody_uri",
-        "property_name":"URI"
-      },
-      {
-        "class":"publicationDocument",
-        "property":"publicationDocument_uri",
-        "property_name":"URI"
-      },
-      {
-        "class":"publicationDocument",
-        "property":"publicationDocument_date",
-        "property_name":"Date"
-      },
-      {
-        "class":"publicationDocument",
-        "property":"publicationDocument_id",
-        "property_name":"Id"
-      },
-      {
-        "class":"publicationDocument",
-        "property":"publicationDocument_language",
-        "property_name":"Language"
-      },
-      {
-        "class":"publicationDocument",
-        "property":"publicationDocument_abstract",
-        "property_name":"Abstract"
-      }
-    ],
-    "classes_text":[
-      {
-        "class":"eurovocConcept",
-        "text":"Eurovoc Concept"
-      },
-      {
-        "class":"corporateBody",
-        "text":"corporateBody"
-      },
-      {
-        "class":"publicationDocument",
-        "text":"Publication Document"
-      }
-    ],
-    "parameters":null,
-    "filters":null,
-    "tooltip":null,
-    "function":null,
-    "columns":null,
-    "type":"TREE",
-    "option":"Publications by Corporate body",
-    "option_text":"Publications by Corporate body classified by this Eurovoc concept",
-    "collection":null,
-    "modelClass":"http://publications.europa.eu/ontology/cdm#concept_eurovoc",
-    "details":[
-      {
-        "class":"publicationDocument",
-        "details":[
-          {
-            "property":"publicationDocument_date",
-            "text":"Publication date",
-            "type":"text"
-          },
-          {
-            "property":"publicationDocument_abstract",
-            "text":"Abstract",
-            "type":"text"
-          },
-          {
-            "property":"publicationDocument_id",
-            "text":"Publication ID",
-            "type":"text"
-          }
-        ]
-      }
-    ],
-    "askquery":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\nPREFIX ontology:<'http://publications.europa.eu/ontology/euvoc#>\nASK\nwhere{{\n?publicationDocument_documentUri <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovocConcept_uri.\n?eurovocConcept_uri skos:prefLabel ?eurovocConcept.\n?publicationDocument_documentUri cdm:work_date_document ?publicationDocument_date;\ncdm:work_authored_by_agent ?corporateBody_uri;\ncdm:work_id_document ?publicationDocument_id.\n?corporateBody_uri a <http://publications.europa.eu/ontology/euvoc#Corporate>;\nskos:prefLabel ?corporateBody.\n?publicationDocument_uri cdm:expression_belongs_to_work ?publicationDocument_documentUri;\ncdm:expression_uses_language ?expression_languageUri;\ncdm:expression_title ?publicationDocument.\n?expression_languageUri skos:prefLabel ?publicationDocument_language.\nOPTIONAL{\n    ?publicationDocument_uri cdm:expression_abstract ?publicationDocument_abstract.\n}\n}\nFILTER(?expression_languageUri=<http://publications.europa.eu/resource/authority/language/ENG>).\nFILTER(langMatches(lang(?eurovocConcept), \"en\")).\nFILTER(langMatches(lang(?corporateBody), \"en\")).\nFILTER(langMatches(lang(?publicationDocument_language), \"en\")).\nfilter(?eurovocConcept_uri=<PARAMETER>).}"
   }
+  
 ]
