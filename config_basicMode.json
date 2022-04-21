@@ -724,8 +724,8 @@
   },
   {
     "class":"eurun",
-    "endpoint_url":"https:\/\/publications.europa.eu\/webapi\/rdf\/sparql",
-    "query":"PREFIX skos: <http:\/\/www.w3.org\/2004\/02\/skos\/core#>   PREFIX org: <http:\/\/www.w3.org\/ns\/org#>\n    PREFIX geo: <http:\/\/www.w3.org\/2003\/01\/geo\/wgs84_pos#>\n    PREFIX geosparql: <http:\/\/www.opengis.net\/ont\/geosparql#>\n    PREFIX foaf: <http:\/\/xmlns.com\/foaf\/0.1\/>\n    PREFIX rdf: <http:\/\/www.w3.org\/1999\/02\/22-rdf-syntax-ns#>\n            SELECT DISTINCT ?eurun ?eurun_uri ?eurun_image ?corporateBody ?corporateBody_uri ?corporateBody_image ?corporateBody_country ?corporateBody_countryUri ?corporateBody_location ?corporateBody_locationUri   \n            where {{?eurun_uri org:hasSubOrganization ?corporateBody_uri;\n                           skos:prefLabel ?eurun;\n                           foaf:depiction ?eurun_image.\n                    ?corporateBody_uri skos:prefLabel ?corporateBody;\n                       foaf:depiction ?corporateBody_image;\n                       geo:location ?corporateBody_locationUri.\n                    ?corporateBody_locationUri skos:prefLabel ?corporateBody_location;\n                              geosparql:sfWithin ?corporateBody_countryUri.\n                    ?corporateBody_countryUri skos:prefLabel ?corporateBody_country          \n                    } \n                   filter(?eurun_uri=<http:\/\/publications.europa.eu\/resource\/authority\/corporate-body\/EURUN>).\n                   FILTER(langMatches(lang(?eurun), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody_location), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody_country), \"en\")).\n                   }ORDER BY ?eurun ?corporateBody\n                   #LIMIT 50\n    ",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n   PREFIX org: <http:\/\/www.w3.org\/ns\/org#>\n    PREFIX geo: <http:\/\/www.w3.org\/2003\/01\/geo\/wgs84_pos#>\n    PREFIX geosparql: <http:\/\/www.opengis.net\/ont\/geosparql#>\n    PREFIX foaf: <http:\/\/xmlns.com\/foaf\/0.1\/>\n    PREFIX rdf: <http:\/\/www.w3.org\/1999\/02\/22-rdf-syntax-ns#>\n            SELECT DISTINCT ?eurun ?eurun_uri ?eurun_image ?corporateBody ?corporateBody_uri ?corporateBody_image ?corporateBody_country ?corporateBody_countryUri ?corporateBody_location ?corporateBody_locationUri   \n            where {{?eurun_uri org:hasSubOrganization ?corporateBody_uri;\n                           skos:prefLabel ?eurun;\n                           foaf:depiction ?eurun_image.\n                    ?corporateBody_uri skos:prefLabel ?corporateBody;\n                       foaf:depiction ?corporateBody_image;\n                       geo:location ?corporateBody_locationUri.\n                    ?corporateBody_locationUri skos:prefLabel ?corporateBody_location;\n                              geosparql:sfWithin ?corporateBody_countryUri.\n                    ?corporateBody_countryUri skos:prefLabel ?corporateBody_country          \n                    } \n                   filter(?eurun_uri=<http:\/\/publications.europa.eu\/resource\/authority\/corporate-body\/EURUN>).\n                   FILTER(langMatches(lang(?eurun), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody_location), \"en\")).\n                   FILTER(langMatches(lang(?corporateBody_country), \"en\")).\n                   }ORDER BY ?eurun ?corporateBody\n                   #LIMIT 50\n    ",
     "hierarchy":[
       {
         "parent":"eurun",
@@ -814,7 +814,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220421-1548: )This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220421-1558: )This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -922,7 +922,7 @@
   {
     "class":"Directory Organization",
     "endpoint_url":"https:\/\/publications.europa.eu\/webapi\/rdf\/sparql",
-    "query":"\nPREFIX xsd: <http:\/\/www.w3.org\/2001\/XMLSchema#>\nPREFIX skos: <http:\/\/www.w3.org\/2004\/02\/skos\/core#>\nPREFIX org: <http:\/\/www.w3.org\/ns\/org#>\nPREFIX euvoc: <http:\/\/publications.europa.eu\/ontology\/euvoc#>\nSELECT DISTINCT ?directoryOrg ?membership ?directoryOrg_uri AS ?membership_directoryOrg\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n       euvoc:positionComplement ?membership.\n       ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n       } \n    filter(?directoryOrg_uri=<PARAMETER>)\n    FILTER(langMatches(lang(?membership), \"en\")).\n    FILTER(langMatches(lang(?directoryOrg), \"en\")).\n    }GROUP BY ?membership\n",
+    "query":"PREFIX xsd: <http:\/\/www.w3.org\/2001\/XMLSchema#>\nPREFIX skos: <http:\/\/www.w3.org\/2004\/02\/skos\/core#>\nPREFIX org: <http:\/\/www.w3.org\/ns\/org#>\nPREFIX euvoc: <http:\/\/publications.europa.eu\/ontology\/euvoc#>\nSELECT DISTINCT ?directoryOrg ?membership ?directoryOrg_uri AS ?membership_directoryOrg\nwhere {{?membership_uri org:organization ?directoryOrg_uri;\n       euvoc:positionComplement ?membership.\n       ?directoryOrg_uri skos:prefLabel ?directoryOrg.\n       } \n    filter(?directoryOrg_uri=<PARAMETER>)\n    FILTER(langMatches(lang(?membership), \"en\")).\n    FILTER(langMatches(lang(?directoryOrg), \"en\")).\n    }GROUP BY ?membership\n",
     "hierarchy":[
       {
         "parent":"directoryOrg",
