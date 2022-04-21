@@ -826,7 +826,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220422-0047)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220422-0057)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1111,9 +1111,9 @@
     ],
     "askquery":null
   },
-  { "class":"corporateBody",
+  { "class":"Directory Organization",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"#corporateBody_1\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\nSELECT DISTINCT ?corporateBody ?corporateBody_uri ?publicationDocument ?publicationDocument_uri ?publicationDocument_abstract ?publicationDocument_language ?publicationDocument_date ?publicationDocument_id\nwhere {{?publicationDocument_documentUri cdm:publication_general_is_about_concept_op_theme ?opTheme_uri;\ncdm:work_authored_by_agent ?corporateBody_uri.\n?opTheme_uri skos:prefLabel ?opTheme.\n?corporateBody_uri skos:prefLabel ?corporateBody.\n?publicationDocument_documentUri cdm:work_date_document ?publicationDocument_date;\ncdm:work_id_document ?publicationDocument_id.\n?publicationDocument_uri cdm:expression_belongs_to_work ?publicationDocument_documentUri;\ncdm:expression_uses_language ?expression_languageUri;\ncdm:expression_title ?publicationDocument.\n?expression_languageUri skos:prefLabel ?publicationDocument_language.\nOPTIONAL{\n?publicationDocument_uri cdm:expression_abstract ?publicationDocument_abstract.\n}\n} \nfilter(?opTheme_uri=<PARAMETER2>)\nfilter(?corporateBody_uri=<PARAMETER>)\nFILTER(langMatches(lang(?corporateBody), \"en\")).\nFILTER(langMatches(lang(?opTheme), \"en\")).\nFILTER(?expression_languageUri=<http://publications.europa.eu/resource/authority/language/ENG>).\nFILTER(langMatches(lang(?publicationDocument_language), \"en\")).\n}ORDER BY ?corporateBody DESC(?publicationDocument_date)",
+    "query":"#Directory Organization_6\n PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\nSELECT DISTINCT ?corporateBody ?corporateBody_uri ?publicationDocument ?publicationDocument_uri ?publicationDocument_abstract ?publicationDocument_language ?publicationDocument_date ?publicationDocument_id\nwhere {{?publicationDocument_documentUri cdm:publication_general_is_about_concept_op_theme ?opTheme_uri;\ncdm:work_authored_by_agent ?corporateBody_uri.\n?opTheme_uri skos:prefLabel ?opTheme.\n?corporateBody_uri skos:prefLabel ?corporateBody.\n?publicationDocument_documentUri cdm:work_date_document ?publicationDocument_date;\ncdm:work_id_document ?publicationDocument_id.\n?publicationDocument_uri cdm:expression_belongs_to_work ?publicationDocument_documentUri;\ncdm:expression_uses_language ?expression_languageUri;\ncdm:expression_title ?publicationDocument.\n?expression_languageUri skos:prefLabel ?publicationDocument_language.\nOPTIONAL{\n?publicationDocument_uri cdm:expression_abstract ?publicationDocument_abstract.\n}\n} \nfilter(?opTheme_uri=<PARAMETER2>)\nfilter(?corporateBody_uri=<PARAMETER>)\nFILTER(langMatches(lang(?corporateBody), \"en\")).\nFILTER(langMatches(lang(?opTheme), \"en\")).\nFILTER(?expression_languageUri=<http://publications.europa.eu/resource/authority/language/ENG>).\nFILTER(langMatches(lang(?publicationDocument_language), \"en\")).\n}ORDER BY ?corporateBody DESC(?publicationDocument_date)",
     "hierarchy":[
       {
         "parent":"corporateBody",
@@ -1204,9 +1204,9 @@
     ],
     "askquery":null
   },
-  { "class":"corporateBody",
+  { "class":"Directory Organization",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"#corporateBody_2\nSELECT ?prefLabel as ?text { ?eurovoc <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') ?work <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovoc. optional{?eurovoc <http://www.w3.org/2004/02/skos/core#broader> ?eurovoc.} ?work <http://publications.europa.eu/ontology/cdm#work_authored_by_agent> <PARAMETER>}limit 9999",
+    "query":"#Directory Organization_7\n SELECT ?prefLabel as ?text { ?eurovoc <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') ?work <http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc> ?eurovoc. optional{?eurovoc <http://www.w3.org/2004/02/skos/core#broader> ?eurovoc.} ?work <http://publications.europa.eu/ontology/cdm#work_authored_by_agent> <PARAMETER>}limit 9999",
     "hierarchy":[
 
     ],
@@ -1237,9 +1237,9 @@
     "details":null,
     "askquery":null
   },
-  { "class":"corporateBody",
+  { "class":"Directory Organization",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"#corporateBody_3\nSELECT ?prefLabel as ?text where {?org <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') <PARAMETER> <http://www.w3.org/ns/org#hasSubOrganization>+ ?org }limit 9999",
+    "query":"#Directory Organization_8\n SELECT ?prefLabel as ?text where {?org <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') <PARAMETER> <http://www.w3.org/ns/org#hasSubOrganization>+ ?org }limit 9999",
     "hierarchy":[
 
     ],
