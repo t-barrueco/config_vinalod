@@ -826,7 +826,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220422-1509)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220422-1609)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1594,6 +1594,39 @@
     "type":"WORDCLOUD",
     "option":"Wordcloud of the organistion chart",
     "option_text":"This will show the most representing topics of the organisation chart",
+    "collection":null,
+    "modelClass":null,
+    "details":null,
+    "askquery":null
+  }, 
+   { "class":"Directory Organization",
+    "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
+    "query":"#Directory Organization_9\n SELECT distinct ?position as ?text where {?org <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') <http://publications.europa.eu/resource/authority/corporate-body/PUBL> <http://www.w3.org/ns/org#hasSubOrganization>+ ?org. ?memberShip <http://www.w3.org/ns/org#organization> ?org. ?memberShip <http://publications.europa.eu/ontology/euvoc#positionComplement> ?position. filter(lang(?position)='en') }limit 9999",
+    "hierarchy":[
+
+    ],
+    "properties":[
+
+    ],
+    "classes_text":[
+
+    ],
+    "parameters":[
+
+    ],
+    "filters":[
+
+    ],
+    "tooltip":[
+
+    ],
+    "function":"",
+    "columns":[
+
+    ],
+    "type":"WORDCLOUD",
+    "option":"Wordcloud of the job titles",
+    "option_text":"This will show the most representing topics of the job titles",
     "collection":null,
     "modelClass":null,
     "details":null,
