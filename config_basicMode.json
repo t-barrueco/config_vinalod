@@ -826,7 +826,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220422-1609)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220422-1709)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1601,7 +1601,7 @@
   }, 
    { "class":"Directory Organization",
     "endpoint_url":"https://publications.europa.eu/webapi/rdf/sparql",
-    "query":"#Directory Organization_9\n SELECT distinct ?position as ?text where {?org <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') <http://publications.europa.eu/resource/authority/corporate-body/PUBL> <http://www.w3.org/ns/org#hasSubOrganization>+ ?org. ?memberShip <http://www.w3.org/ns/org#organization> ?org. ?memberShip <http://publications.europa.eu/ontology/euvoc#positionComplement> ?position. filter(lang(?position)='en') }limit 9999",
+    "query":"#Directory Organization_9\n SELECT distinct ?position as ?text where {?org <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel. FILTER(LANG(?prefLabel)='en') <PARAMETER> <http://www.w3.org/ns/org#hasSubOrganization>+ ?org. ?memberShip <http://www.w3.org/ns/org#organization> ?org. ?memberShip <http://publications.europa.eu/ontology/euvoc#positionComplement> ?position. filter(lang(?position)='en') }limit 9999",
     "hierarchy":[
 
     ],
