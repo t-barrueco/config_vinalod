@@ -29,6 +29,12 @@ http://publications.europa.eu/resource/authority/continent/ANTARCTICA	images/ant
 http://publications.europa.eu/resource/authority/continent/ASIA	images/asia.svg
 http://publications.europa.eu/resource/authority/continent/EUROPE	images/europe.svg
 http://publications.europa.eu/resource/authority/continent/OCEANIA	images/oceania.svg
+http://publications.europa.eu/resource/authority/continent/OCEANIA	images/oceania.svg
+http://publications.europa.eu/resource/authority/country/DEU	https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg
+http://publications.europa.eu/resource/authority/country/DEU	https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg
+http://publications.europa.eu/resource/authority/country/ITA	https://upload.wikimedia.org/wikipedia/commons/a/ac/Printable_Flag_of_Italy.svg
+http://publications.europa.eu/resource/authority/country/ITA	https://upload.wikimedia.org/wikipedia/commons/a/ac/Printable_Flag_of_Italy.svg
+http://publications.europa.eu/resource/authority/country/BEL	https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/1038px-Flag_of_Belgium.svg.png
 Country	images/country.svg
 Case-law concept	images/classification.svg
 Case-law	images/legislation.svg
