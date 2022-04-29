@@ -831,7 +831,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220429-0511)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220429-0611)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -2027,7 +2027,7 @@
 	  {
         "class":"DEUCatalog",
         "property":"DEUCatalog_spatial",
-        "property_name":"DEU Catalog spatial"
+        "property_name":"URI"
       }
     ],
     "classes_text":[
