@@ -5,7 +5,7 @@ Membership Type	images/briefcase.svg
 Person	images/person_icon.svg
 OP Theme	images/publication.svg
 corporateBody	images/organization_icon.svg
-#Catalog of open datasets	https://static.thenounproject.com/png/3972987-200.png
+Catalog of open datasets	https://static.thenounproject.com/png/3972987-200.png
 data service	https://static.thenounproject.com/png/3422130-200.png
 Continents	https://static.thenounproject.com/png/22641-200.png
 NUTS Level 0	https://static.thenounproject.com/png/2010364-84.png
