@@ -831,7 +831,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220429-0611)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220503-1031)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1995,7 +1995,7 @@
   },
   { "class":"dataeuropa",
     "endpoint_url":"https://data.europa.eu/sparql",
-    "query":"#dataeuropa\n SELECT DISTINCT ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri) concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_uri ?DEUCatalog_Modified ?DEUCatalog_spatial ?DEUCatalog_Language\n WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n OPTIONAL{?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description} optional { ?DEUCatalog_uri <http://purl.org/dc/terms/spatial> ?DEUCatalog_spatial } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified. ?DEUCatalog_uri <http://purl.org/dc/terms/language> ?DEUCatalog_Language   { SELECT  ?DEUCatalog_uri \n WHERE\n { ?DEUCatalog_uri a <http://www.w3.org/ns/dcat#Catalog>. filter (! EXISTS { ?s <http://purl.org/dc/terms/hasPart> ?DEUCatalog_uri })}\n }\n } ORDER BY ?dataeuropa ?DEUCatalog",
+    "query":"#dataeuropa\n SELECT DISTINCT ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri) concat(?title, ' - ', ?description) as ?DEUCatalog ?DEUCatalog_uri ?DEUCatalog_Modified ?DEUCatalog_spatial_uri ?DEUCatalog_Language\n WHERE{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?title\n OPTIONAL{?DEUCatalog_uri <http://purl.org/dc/terms/description>  ?description} optional { ?DEUCatalog_uri <http://purl.org/dc/terms/spatial> ?DEUCatalog_spatial_uri } ?DEUCatalog_uri <http://purl.org/dc/terms/modified> ?DEUCatalog_Modified. ?DEUCatalog_uri <http://purl.org/dc/terms/language> ?DEUCatalog_Language   { SELECT  ?DEUCatalog_uri \n WHERE\n { ?DEUCatalog_uri a <http://www.w3.org/ns/dcat#Catalog>. filter (! EXISTS { ?s <http://purl.org/dc/terms/hasPart> ?DEUCatalog_uri })}\n }\n } ORDER BY ?dataeuropa ?DEUCatalog",
     "hierarchy":[
       {
         "parent":"dataeuropa",
@@ -2026,8 +2026,8 @@
 	  ,
 	  {
         "class":"DEUCatalog",
-        "property":"DEUCatalog_spatial",
-        "property_name":"URI"
+        "property":"DEUCatalog_spatial_uri",
+        "property_name":"SPATIAL URI"
       }
     ],
     "classes_text":[
