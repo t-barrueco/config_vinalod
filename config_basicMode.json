@@ -831,7 +831,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220506-1031)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220506-1041)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1659,8 +1659,8 @@
       },
       {
         "class":"person",
-        "property":"person_image",
-        "property_name":"Person Image"
+        "property":"startDate",
+        "property_name":"Date"
       },
       {
         "class":"person",
@@ -1670,8 +1670,8 @@
     ],
     "classes_text":[
       {
-        "class":"membership",
-        "text":"Membership"
+        "class":"position",
+        "text":"Position"
       },
       {
         "class":"person",
