@@ -831,7 +831,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220506-1059)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220506-1119)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -1689,10 +1689,10 @@
     ],
     "function":"",
     "columns":[
-	      "startDate"
+	      "startDate",
 		  "person",
       "membership",
-      "orgPrefLabel",
+      "orgPrefLabel"
 
     ],
     "type":"TABLE",
