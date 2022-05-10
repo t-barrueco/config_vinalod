@@ -831,7 +831,7 @@
     ],
     "type":"TREE",
     "option":"European Union Institutions and bodies",
-    "option_text":"(update 20220510-1444)This will list the European Union Institutions and bodies",
+    "option_text":"(update 20220510-1454)This will list the European Union Institutions and bodies",
     "collection":"eu_whoiswho",
     "modelClass":null,
     "details":null,
@@ -3902,7 +3902,7 @@
   },
   { "class":"dataeuropa",
     "endpoint_url":"https://data.europa.eu/sparql",
-    "query":"#dataeuropa_3\n PREFIX dcat: <http://www.w3.org/ns/dcat#>\n PREFIX dcterms: <http://purl.org/dc/terms/>\n SELECT DISTINCT ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri) ?DEUCatalog ?DEUCatalog_uri ?datatheme ?datatheme_uri (?DEUCatalog_uri AS ?datatheme_deucatalog)\n WHERE{{ ?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?DEUCatalog;\n dcat:dataset ?dataset_uri.\n ?dataset_uri dcat:distribution ?viz_uri;\n dcat:theme ?datatheme_uri.\n ?datatheme_uri skos:prefLabel ?datatheme.\n ?viz_uri dcterms:type <http://publications.europa.eu/resource/authority/distribution-type/VISUALIZATION>;\n dcat:accessURL ?viz_accessURL\n }\n FILTER(langMatches(lang(?datatheme), 'en')).\n }\n",
+    "query":"#dataeuropa_3\n  PREFIX dcat: <http://www.w3.org/ns/dcat#> PREFIX dcterms: <http://purl.org/dc/terms/>\n  SELECT DISTINCT ('data.europa.eu' as ?dataeuropa) ('http://data.europa.eu' as ?dataeuropa_uri) ?DEUCatalog ?DEUCatalog_uri ?datatheme ?datatheme_uri (?DEUCatalog_uri AS ?datatheme_deucatalog) ?Org_uri\n  WHERE{?DEUCatalog_uri <http://purl.org/dc/terms/title>  ?DEUCatalog;  dcat:dataset ?dataset_uri.\n OPTIONAL {?DEUCatalog_uri <http://purl.org/dc/terms/publisher> ?Org_uri}\n  ?dataset_uri dcat:distribution ?viz_uri;  dcat:theme ?datatheme_uri.\n  ?datatheme_uri skos:prefLabel ?datatheme.   FILTER(langMatches(lang(?datatheme), 'en')).\n  ?viz_uri dcterms:type <http://publications.europa.eu/resource/authority/distribution-type/VISUALIZATION>;\n  dcat:accessURL ?viz_accessURL }",
     "hierarchy":[
       {
         "parent":"dataeuropa",
@@ -3923,6 +3923,11 @@
         "class":"DEUCatalog",
         "property":"DEUCatalog_uri",
         "property_name":"URI"
+      },
+	  {
+        "class":"DEUCatalog",
+        "property":"Org_uri",
+        "property_name":"Publisher uri"
       },
       {
         "class":"datatheme",
