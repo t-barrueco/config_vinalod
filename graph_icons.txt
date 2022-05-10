@@ -25,11 +25,10 @@ Summaries of EU legislation classification	images/classification.svg
 Summary of EU legislation	images/legislation.svg
 http://publications.europa.eu/resource/authority/continent/AFRICA	images/africa.svg
 http://publications.europa.eu/resource/authority/continent/AMERICA	images/america.svg
-http://publications.europa.eu/resource/authority/continent/ANTARCTICA	images/antartica.svg
+http://publications.europa.eu/resource/authority/continent/ANTARCTICA	https://static.thenounproject.com/png/1314618-200.png
 http://publications.europa.eu/resource/authority/continent/ASIA	images/asia.svg
 http://publications.europa.eu/resource/authority/continent/EUROPE	images/europe.svg
-http://publications.europa.eu/resource/authority/continent/OCEANIA	images/oceania.svg
-http://publications.europa.eu/resource/authority/continent/OCEANIA	images/oceania.svg
+http://publications.europa.eu/resource/authority/continent/OCEANIA	https://static.thenounproject.com/png/301972-200.png
 http://publications.europa.eu/resource/authority/country/DEU	https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg
 http://publications.europa.eu/resource/authority/country/FRA	https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg
 http://publications.europa.eu/resource/authority/country/ITA	https://upload.wikimedia.org/wikipedia/commons/a/ac/Printable_Flag_of_Italy.svg
@@ -117,7 +116,19 @@ menuOption	images/options.svg
 http://data.europa.eu	https://dxadxa.github.io/d.png
 http://data.europa.eu/88u/catalogue/european-union-open-data-portal	http://publications.europa.eu/code/images/scan/5000200-flag-cl.jpg
 http://publications.europa.eu/resource/authority/pub-theme/A	http://publications.europa.eu/code/images/scan/5000200-flag-cl.jpg
-"http://publications.europa.eu/resource/authority/pub-theme/E	data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8Zz4KICA8cGF0aCBkPSJtNDkzLjU5IDIyNy4xNiAyMS44NzkgMjEuODc5LTExOC4zOSAxMTguMzktNDEuMTUyLTQxLjE1Mi02OS4yODUgNjEuNTY2di0wLjAwMzkwNmMxNS43NDYgMTEuMDc0IDI4LjA4MiAyNi4zMzIgMzUuNjEzIDQ0LjA0M2wzMS40OTItMjcuOTQxIDQzLjQyNiA0My40MjYgMTU4LjMyLTE1OC4zMiAyMS44NzkgMjEuODc5IDMwLjY4OC0xMTQuNDZ6Ii8+CiAgPHBhdGggZD0ibTIyNy43NyAzODcuOTRjLTIyLjIzIDAtNDMuNTUxIDguODI4MS01OS4yNyAyNC41NTEtMTUuNzIzIDE1LjcxOS0yNC41NTUgMzcuMDM5LTI0LjU1NSA1OS4yNyAwIDIyLjIzNCA4LjgzMiA0My41NTUgMjQuNTU1IDU5LjI3MyAxNS43MTkgMTUuNzE5IDM3LjAzOSAyNC41NTEgNTkuMjcgMjQuNTUxIDIyLjIzNCAwIDQzLjU1NS04LjgzMiA1OS4yNzMtMjQuNTUxczI0LjU1MS0zNy4wMzkgMjQuNTUxLTU5LjI3M2MwLTIyLjIzLTguODMyLTQzLjU1MS0yNC41NTEtNTkuMjctMTUuNzE5LTE1LjcyMy0zNy4wMzktMjQuNTUxLTU5LjI3My0yNC41NTF6bTI4LjAzNSA2MS4xNDF2LTAuMDAzOTA2Yy0xLjc5NjktMS4yODUyLTMuNzUzOS0yLjMzNTktNS44MjQyLTMuMTI1bC0yLjk4NDQtMS4xMzY3Yy01LjI0MjItMS44OTg0LTEwLjg5MS0yLjM4NjctMTYuMzgzLTEuNDIxOS00LjI4NTIgMC41MjczNC04LjMzNTkgMi4yNS0xMS42ODggNC45NzI3LTMuMzQ3NyAyLjcyMjctNS44NjMzIDYuMzMyLTcuMjU3OCAxMC40MjJoNDEuMjAzbC0yLjQxNDEgOS40NzI3LTQwLjYzNy0wLjAwMzkwNmMtMC4wNjI1IDAuODgyODEtMC4wNjI1IDEuNzY5NSAwIDIuNjUyMyAwLjAxNTYyNiAxLjcxNDggMC4xNTYyNSAzLjQyMTkgMC40Mjk2OSA1LjExNzJoMzguNjQ1bC0zLjAzMTIgOS40NzI3LTMzLjAxMi0wLjAwMzkwNmMxLjkzMzYgNC42MjUgNS4yNDIyIDguNTQzIDkuNDc2NiAxMS4yMjMgNC4yMzgzIDIuNjc1OCA5LjE5OTIgMy45ODQ0IDE0LjIwMyAzLjc0MjIgMy4wNjI1IDAuMDAzOTA3IDYuMTEzMy0wLjQ0NTMxIDkuMDQ2OS0xLjMyNDIgMy4xNjAyLTAuODc4OTEgNi4xOTkyLTIuMTUyMyA5LjA0My0zLjc4OTF2MjMuNjhjLTUuODkwNiAyLjMxNjQtMTIuMTg4IDMuNDI1OC0xOC41MTYgMy4yNjU2LTExLjM4NyAwLjM0Mzc1LTIyLjU0Ny0zLjIxNDgtMzEuNjM3LTEwLjA4Ni04LjM0MzgtNi42MTMzLTE0LjEzNy0xNS45MjItMTYuMzgzLTI2LjMzMmgtMTMuMTY4bDMuMDMxMi05LjQ3MjcgOC42MjExIDAuMDAzOTA2di01LjY4MzYtMi4zNjcyaC0xMS42NTJsMy4wMzEyLTkuNDcyN2g5LjgwNDdjMS45ODA1LTEwLjY4OCA3Ljc1LTIwLjMwNSAxNi4yNDItMjcuMDkgOC45Mzc1LTYuOTYwOSAyMC4wMzEtMTAuNTY2IDMxLjM1Mi0xMC4xODQgMi44NjMzIDAuMDExNzE5IDUuNzI2NiAwLjE4NzUgOC41NzAzIDAuNTIzNDQgMS43MDMxIDAgMy40MTAyIDAuNDI1NzggNS4xMTMzIDAuNzU3ODFoMC4wMDM5MDZjNC40OTYxIDAuNDEwMTYgOC44MjQyIDEuOTIxOSAxMi41OTggNC40MDIzeiIvPgogPC9nPgo8L3N2Zz4K"
+http://publications.europa.eu/resource/authority/pub-theme/B	https://static.thenounproject.com/png/1456781-200.png
+http://publications.europa.eu/resource/authority/pub-theme/C	https://static.thenounproject.com/png/4468227-200.png
+http://publications.europa.eu/resource/authority/pub-theme/D	https://static.thenounproject.com/png/686718-200.png
+http://publications.europa.eu/resource/authority/pub-theme/E	https://static.thenounproject.com/png/3506187-200.png
+http://publications.europa.eu/resource/authority/pub-theme/F	https://static.thenounproject.com/png/2714717-200.png
+http://publications.europa.eu/resource/authority/pub-theme/G	https://static.thenounproject.com/png/4542842-200.png
+http://publications.europa.eu/resource/authority/pub-theme/H	https://static.thenounproject.com/png/58363-200.png
+http://publications.europa.eu/resource/authority/pub-theme/I	https://static.thenounproject.com/png/3099939-200.png
+http://publications.europa.eu/resource/authority/pub-theme/J	https://static.thenounproject.com/png/3321789-200.png
+http://publications.europa.eu/resource/authority/pub-theme/K	https://static.thenounproject.com/png/2243757-200.png
+http://publications.europa.eu/resource/authority/pub-theme/L	https://static.thenounproject.com/png/4443676-200.png
+http://publications.europa.eu/resource/authority/pub-theme/M	https://static.thenounproject.com/png/2380365-200.png
+http://publications.europa.eu/resource/authority/pub-theme/N	https://static.thenounproject.com/png/1132971-200.png
 http://publications.europa.eu/resource/authority/corporate-body/EPSO	https://publications.europa.eu/code/images/scan/5000200-epso-cl.png
 http://publications.europa.eu/resource/authority/corporate-body/PUBL	https://publications.europa.eu/code/images/scan/5000200-op-cl.jpg
 http://publications.europa.eu/resource/authority/corporate-body/COM	https://publications.europa.eu/code/images/scan/5000200-commission-cl.jpg
