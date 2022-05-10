@@ -108,7 +108,7 @@ http://publications.europa.eu/resource/authority/corporate-body/ACER	http://publ
 http://publications.europa.eu/resource/authority/corporate-body/ECHA	http://publications.europa.eu/code/images/scan/5000200-echa-cl.jpg
 http://publications.europa.eu/resource/authority/corporate-body/CEPOL	http://publications.europa.eu/code/images/scan/5000200-cepol-cl.png
 http://publications.europa.eu/resource/authority/corporate-body/CEDEFOP	http://publications.europa.eu/code/images/scan/5000200-cedefop-cl.gif
-http://publications.europa.eu/resource/authority/corporate-body/EUROFOUND	http://publications.europa.eu/code/images/scan/5000200-eurofound-cl.jpg
+http://publications.europa.eu/resource/authority/corporate-body/EUROFOUND	https://www.eurofound.europa.eu/sites/all/themes/effoundationtheme/logo.png
 http://publications.europa.eu/resource/authority/corporate-body/EUROPOL	http://publications.europa.eu/code/images/scan/5000200-europol-cl.jpg
 http://publications.europa.eu/resource/authority/corporate-body/EMCDDA	http://publications.europa.eu/code/images/scan/5000200-emcdda-cl.jpg
 http://publications.europa.eu/resource/authority/corporate-body/FRONTEX	https://publications.europa.eu/code/images/scan/5000200-frontex-cl.png
