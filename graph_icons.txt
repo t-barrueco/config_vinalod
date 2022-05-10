@@ -50,20 +50,23 @@ http://publications.europa.eu/resource/authority/country/ROU	https://upload.wiki
 http://publications.europa.eu/resource/authority/country/MDA	https://upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_Moldova.svg
 http://publications.europa.eu/resource/authority/country/ESP	https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Spain_%28Civil%29.svg
 http://publications.europa.eu/resource/authority/country/SVK	https://upload.wikimedia.org/wikipedia/commons/e/e6/Flag_of_Slovakia.svg
+http://publications.europa.eu/resource/authority/country/GBR	https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg
 http://publications.europa.eu/resource/authority/place/GBR_LON	https://upload.wikimedia.org/wikipedia/commons/d/d3/GLA_Flag.svg
 http://publications.europa.eu/resource/authority/country/MLT	https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Malta.svg
 http://publications.europa.eu/resource/authority/country/CYP	https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Cyprus.svg
 http://publications.europa.eu/resource/authority/country/SVN	https://upload.wikimedia.org/wikipedia/commons/f/f0/Flag_of_Slovenia.svg
 http://publications.europa.eu/resource/authority/country/SRB	https://upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_Serbia.svg
 http://publications.europa.eu/resource/authority/country/MNE	https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Montenegro.svg
-http://publications.europa.eu/resource/authority/country/PTR	https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg
 http://publications.europa.eu/resource/authority/country/UKR	https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg
 http://publications.europa.eu/resource/authority/country/NOR	https://upload.wikimedia.org/wikipedia/commons/1/1e/Flag_of_Norway_%28c81329_for_red_%26_14275b_for_blue%29.svg
 http://publications.europa.eu/resource/authority/country/CHE	https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg
 http://publications.europa.eu/resource/authority/country/AUT	https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg
-http://publications.europa.eu/resource/authority/country/AUT	https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg
-http://publications.europa.eu/resource/authority/country/AUT	https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg
-http://publications.europa.eu/resource/authority/country/AUT	https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg
+http://publications.europa.eu/resource/authority/country/GRC	https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg
+http://publications.europa.eu/resource/authority/country/FIN	https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg
+http://publications.europa.eu/resource/authority/country/ISL	https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg
+http://publications.europa.eu/resource/authority/country/LIE	https://upload.wikimedia.org/wikipedia/commons/4/47/Flag_of_Liechtenstein.svg
+http://publications.europa.eu/resource/authority/country/LVA	https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Latvia.svg
+http://publications.europa.eu/resource/authority/country/PRT	https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg
 Country	images/country.svg
 Case-law concept	images/classification.svg
 Case-law	images/legislation.svg
